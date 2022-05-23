@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6d34d9a79429f40b5e06acda184d2b, type: 3}
+  m_Name: PlanetDetails_Size_0
+  m_EditorClassIdentifier: 
+  planetTypeName: 
+  celestialBodyType: 0
+  sizeClass: 0
+  planetPrefab: {fileID: 5610611382448597381, guid: d4f649455373b344e8760f8da2d9c8f3, type: 3}
+  hasPreviousPlanetDetails: 0
+  previousPlanetDetails: {fileID: 0}
+  hasNextPlanetDetails: 1
+  nextPlanetDetails: {fileID: 11400000, guid: 69683425713e1c84db6ae1f10e5523e4, type: 2}
+  baseHealth: 3
+  minMass: 0
+  maxMass: 20
+  minRigidbodyMass: 0.3
+  maxRigidbodyMass: 0.8

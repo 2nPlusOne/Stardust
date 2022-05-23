@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71d999cfbb6bb9a4ca4fce554305a57e, type: 3}
+  m_Name: EngineDetails_Level_0
+  m_EditorClassIdentifier: 
+  engineName: BP-404 "Yorkshire" Engine
+  engineUpgradeLevel: 0
+  enginePrefab: {fileID: 3232127985626162853, guid: d46ddaea1dfccac4bb6d055e7594c369, type: 3}
+  engineActivationSound: {fileID: 0}
+  engineTurnSpeed: 3
+  engineForce: 3
+  engineMaxSpeed: 3
