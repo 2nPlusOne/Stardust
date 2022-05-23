@@ -2,14 +2,14 @@ using UnityEngine;
 
 namespace Spotnose.Stardust
 {
-    [RequireComponent(typeof(PlayerPlanet))]
+    [RequireComponent(typeof(PlayerBody))]
     [DisallowMultipleComponent]
-    public class PlanetControl : MonoBehaviour
+    public class BodyControl : MonoBehaviour
     {
         // engine pivot
         [SerializeField] private Transform enginePivotTransform;
 
-        private PlayerPlanet _playerPlanet;
+        private PlayerBody _playerBody;
         private Engine _engine;
         private Rigidbody2D _rb2d;
         private float _turnInput;
@@ -19,13 +19,13 @@ namespace Spotnose.Stardust
 
         private void Awake()
         {
-            _playerPlanet = GetComponent<PlayerPlanet>();
+            _playerBody = GetComponent<PlayerBody>();
             _rb2d = GetComponent<Rigidbody2D>();
         }
         
         private void Start()
         {
-            _engine = _playerPlanet.currentEngine;
+            _engine = _playerBody.CurrentEngine;
         }
 
         private void Update()

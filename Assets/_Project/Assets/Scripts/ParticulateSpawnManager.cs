@@ -18,20 +18,24 @@ namespace Spotnose.Stardust
 
         [Header("Particulate Details")]
         [SerializeField] private ParticulateDetailsSO dustyDetails;
+        [SerializeField] private ParticulateDetailsSO metalDetails;
 
-        private PlayerPlanet _playerPlanet;
-        private List<DustParticulate> _activeDustParticulates = new();
+        private PlayerBody _playerBody;
+        private List<Particulate> _activeDustParticulates = new();
+        private List<Particulate> _activeMetalParticulates = new();
         private float _particulateCullTimer;
         
         private void Start()
         {
-            _playerPlanet = PlayerPlanet.Instance;
+            _playerBody = PlayerBody.Instance;
             dustyDetails.activeParticulateCount = 0;
+            metalDetails.activeParticulateCount = 0;
         }
         
         private void Update()
         {
             HandleDustParticulates();
+            HandleMetalParticulates();
             HandleParticulateCulling();
         }
 
@@ -47,21 +51,50 @@ namespace Spotnose.Stardust
             var maxParticulatesReached = dustyDetails.activeParticulateCount >= dustyDetails.maxParticulateCount;
             if (!maxParticulatesReached) SpawnDustParticulate();
         }
-        
+
         private void SpawnDustParticulate()
         {
-            var spawnPosition = Utilities.GenerateRandomPointOutsideCircle(_playerPlanet.transform.position,
+            var spawnPosition = Utilities.GenerateRandomPointOutsideCircle(_playerBody.transform.position,
                 particulateMinSpawnRadius, particulateMaxSpawnRadius);
             var spawnRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
             var prefab = dustyDetails.GetRandomPrefab();
             var spawnSpeed = dustyDetails.GetRandomSpeed();
 
-            var dustParticulate = (DustParticulate) PoolManager.Instance.GetObject(prefab, spawnPosition, spawnRotation);
+            var dustParticulate = (Particulate) PoolManager.Instance.GetObject(prefab, spawnPosition, spawnRotation);
             var spawnVelocity = Utilities.GenerateRandomVectorOfMagnitude(spawnSpeed);
             dustParticulate.Initialize(spawnVelocity, dustyDetails);
             
             _activeDustParticulates.Add(dustParticulate);
             dustyDetails.activeParticulateCount++;
+        }
+
+        private void HandleMetalParticulates()
+        {
+            // Increment the timer
+            metalDetails.particulateSpawnTimer += Time.deltaTime;
+            
+            var spawnIntervalElapsed = metalDetails.particulateSpawnTimer >= metalDetails.spawnInterval;
+            if (!spawnIntervalElapsed) return;
+            metalDetails.particulateSpawnTimer -= metalDetails.spawnInterval;
+            
+            var maxParticulatesReached = metalDetails.activeParticulateCount >= metalDetails.maxParticulateCount;
+            if (!maxParticulatesReached) SpawnMetalParticulate();
+        }
+
+        private void SpawnMetalParticulate()
+        {
+            var spawnPosition = Utilities.GenerateRandomPointOutsideCircle(_playerBody.transform.position,
+                particulateMinSpawnRadius, particulateMaxSpawnRadius);
+            var spawnRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
+            var prefab = metalDetails.GetRandomPrefab();
+            var spawnSpeed = metalDetails.GetRandomSpeed();
+            
+            var metalParticulate = (Particulate) PoolManager.Instance.GetObject(prefab, spawnPosition, spawnRotation);
+            var spawnVelocity = Utilities.GenerateRandomVectorOfMagnitude(spawnSpeed);
+            metalParticulate.Initialize(spawnVelocity, metalDetails);
+            
+            _activeMetalParticulates.Add(metalParticulate);
+            metalDetails.activeParticulateCount++;
         }
 
         private void HandleParticulateCulling()
@@ -78,27 +111,42 @@ namespace Spotnose.Stardust
 
         private void CullParticulates()
         {
-            var particulatesToRemove = new List<DustParticulate>();
+            // Dust Particulates
+            var dustParticulatesToRemove = new List<Particulate>();
             foreach (var particulate in _activeDustParticulates)
             {
-                if (!(Vector3.Distance(particulate.transform.position, _playerPlanet.transform.position) >
+                if (!(Vector3.Distance(particulate.transform.position, _playerBody.transform.position) >
                       particulateCullRadius)) continue;
                 
                 if (particulate.timeAlive < particulateCullLifetime) continue;
                 
                 particulate.gameObject.SetActive(false);
-                particulatesToRemove.Add(particulate);
+                dustParticulatesToRemove.Add(particulate);
                 dustyDetails.activeParticulateCount--;
             }
+            foreach (var particulate in dustParticulatesToRemove) _activeDustParticulates.Remove(particulate);
             
-            foreach (var particulate in particulatesToRemove) _activeDustParticulates.Remove(particulate);
+            // Metal Particulates
+            var metalParticulatesToRemove = new List<Particulate>();
+            foreach (var particulate in _activeMetalParticulates)
+            {
+                if (!(Vector3.Distance(particulate.transform.position, _playerBody.transform.position) >
+                      particulateCullRadius)) continue;
+                
+                if (particulate.timeAlive < particulateCullLifetime) continue;
+                
+                particulate.gameObject.SetActive(false);
+                metalParticulatesToRemove.Add(particulate);
+                metalDetails.activeParticulateCount--;
+            }
+            foreach (var particulate in metalParticulatesToRemove) _activeMetalParticulates.Remove(particulate);
         }
 
 #if UNITY_EDITOR
         private void OnDrawGizmos()
         {
             if (!Application.isPlaying) return;
-            var playerPosition = _playerPlanet.transform.position;
+            var playerPosition = _playerBody.transform.position;
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(playerPosition, particulateCullRadius);
             Gizmos.color = Color.green;

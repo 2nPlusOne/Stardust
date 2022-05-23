@@ -10,10 +10,10 @@ GameObject:
   m_Component:
   - component: {fileID: 1257628878177914259}
   - component: {fileID: 7107873414726947874}
-  - component: {fileID: 856729404952798535}
+  - component: {fileID: 3313300503627698114}
   m_Layer: 0
-  m_Name: Planet_Size_0
-  m_TagString: Player
+  m_Name: Body_Size_1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 769cae5cb5f840e4184ff8104db71cce, type: 3}
+  m_Sprite: {fileID: 21300000, guid: fb3e76cb1be6d5046b502a240712c4d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -85,7 +85,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &856729404952798535
+--- !u!58 &3313300503627698114
 CircleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -100,4 +100,4 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.28
+  m_Radius: 0.4

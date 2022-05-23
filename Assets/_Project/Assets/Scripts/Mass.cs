@@ -6,7 +6,7 @@ namespace Spotnose.Stardust
     [DisallowMultipleComponent]
     public class Mass : MonoBehaviour
     {
-        private PlanetDetailsSO _planetDetails;
+        private BodyDetailsSO _bodyDetails;
         private Rigidbody2D _rb2d;
         [SerializeField] private int _minMass;
         [SerializeField] private int _maxMass;
@@ -16,13 +16,15 @@ namespace Spotnose.Stardust
         {
             _rb2d = GetComponent<Rigidbody2D>();
         }
+
+        public BodyDetailsSO GetBodyDetails() => _bodyDetails;
         
-        public void SetPlanetDetails(PlanetDetailsSO planetDetails)
+        public void SetBodyDetails(BodyDetailsSO bodyDetails)
         {
-            _planetDetails = planetDetails;
-            _minMass = _planetDetails.minMass;
-            _maxMass = planetDetails.maxMass;
-            _currentMass = planetDetails.minMass;
+            _bodyDetails = bodyDetails;
+            _minMass = _bodyDetails.minMass;
+            _maxMass = bodyDetails.maxMass;
+            _currentMass = bodyDetails.minMass;
         }
 
         /// <summary>
@@ -49,26 +51,14 @@ namespace Spotnose.Stardust
         {
             if (_currentMass >= _maxMass) return false;
             _currentMass += amount;
-            SetRigidbodyMass(_currentMass);
             Events.OnMassChanged.Invoke(this);
-            
             if (_currentMass >= _maxMass)
             {
                 _currentMass = _maxMass;
+                
                 return true;
             }
             return false;
-        }
-
-        private void SetRigidbodyMass(int currentMass)
-        {
-            var difference = _maxMass - _minMass;
-            var massUntilMax = _maxMass - _currentMass;
-            var massPercent = 1f - (float) massUntilMax / difference;
-            
-            var rbMassDifference = _planetDetails.maxRigidbodyMass - _planetDetails.minRigidbodyMass; 
-            var rbMass = _planetDetails.minRigidbodyMass + (rbMassDifference * massPercent);
-            _rb2d.mass = rbMass;
         }
 
         /// Set the current mass to the specified percentage of the max mass.

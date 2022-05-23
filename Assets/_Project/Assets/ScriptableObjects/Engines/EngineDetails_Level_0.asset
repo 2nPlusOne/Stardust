@@ -18,4 +18,4 @@ MonoBehaviour:
   engineActivationSound: {fileID: 0}
   engineTurnSpeed: 3
   engineForce: 2
-  engineMaxSpeed: 30
+  engineMaxSpeed: 5

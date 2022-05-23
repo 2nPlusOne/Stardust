@@ -10,18 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 8f6d34d9a79429f40b5e06acda184d2b, type: 3}
-  m_Name: PlanetDetails_Size_1
+  m_Name: BodyDetails_Size_1
   m_EditorClassIdentifier: 
-  planetTypeName: 
   celestialBodyType: 0
-  sizeClass: 0
-  planetPrefab: {fileID: 5610611382448597381, guid: 9eaa24da8004c83479092dad8ef10097, type: 3}
-  hasPreviousPlanetDetails: 1
-  previousPlanetDetails: {fileID: 11400000, guid: 01b95320d8067d949a25cf2caf473c15, type: 2}
-  hasNextPlanetDetails: 0
-  nextPlanetDetails: {fileID: 0}
+  sizeCategory: 2
+  bodyPrefab: {fileID: 5610611382448597381, guid: 9eaa24da8004c83479092dad8ef10097, type: 3}
+  progressionPosition: 1
+  hasPreviousBodyDetails: 1
+  previousBodyDetails: {fileID: 11400000, guid: 01b95320d8067d949a25cf2caf473c15, type: 2}
+  hasNextBodyDetails: 0
+  nextBodyDetails: {fileID: 0}
   baseHealth: 4
   minMass: 20
   maxMass: 60
-  minRigidbodyMass: 0.8
-  maxRigidbodyMass: 1.8
+  minRigidbodyMass: 0.5
+  maxRigidbodyMass: 1
+  maxTransformScale: 1
