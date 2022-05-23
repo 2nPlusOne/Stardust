@@ -1,8 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Spotnose
+namespace Spotnose.Stardust
 {
     public class AsteroidSpawnManager : MonoBehaviour
     {

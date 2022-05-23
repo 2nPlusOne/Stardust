@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace Spotnose
+namespace Spotnose.Stardust
 {
     [DisallowMultipleComponent]
     public class PoolManager : Singleton<PoolManager>
@@ -39,7 +39,7 @@ namespace Spotnose
             if (_poolDictionary.ContainsKey(poolKey)) return;
             
             var pool = new Queue<Component>();
-            var poolComponentType = Type.GetType($"Spotnose.{componentType}");
+            var poolComponentType = Type.GetType($"Spotnose.Stardust.{componentType}");
 
             for (var i = 0; i < poolSize; i++)
             {

@@ -1,10 +1,8 @@
-using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Spotnose
+namespace Spotnose.Stardust
 {
     [DisallowMultipleComponent]
     public class ParticulateSpawnManager : MonoBehaviour
@@ -60,7 +58,7 @@ namespace Spotnose
 
             var dustParticulate = (DustParticulate) PoolManager.Instance.GetObject(prefab, spawnPosition, spawnRotation);
             var spawnVelocity = Utilities.GenerateRandomVectorOfMagnitude(spawnSpeed);
-            dustParticulate.Initialize(spawnVelocity);
+            dustParticulate.Initialize(spawnVelocity, dustyDetails);
             
             _activeDustParticulates.Add(dustParticulate);
             dustyDetails.activeParticulateCount++;

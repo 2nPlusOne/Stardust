@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
-namespace Spotnose
+
+namespace Spotnose.Stardust
 {
     public static class Utilities
     {

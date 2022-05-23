@@ -1,9 +1,6 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Spotnose
+namespace Spotnose.Stardust
 {
     [RequireComponent(typeof(Rigidbody2D))]
     [DisallowMultipleComponent]
@@ -53,6 +50,7 @@ namespace Spotnose
             if (_currentMass >= _maxMass) return false;
             _currentMass += amount;
             SetRigidbodyMass(_currentMass);
+            Events.OnMassChanged.Invoke(this);
             
             if (_currentMass >= _maxMass)
             {
@@ -79,5 +77,7 @@ namespace Spotnose
         {
             _currentMass = Mathf.RoundToInt(percentage * _maxMass);
         }
+        
+        public float GetMassPercentage() => (float) _currentMass / _maxMass;
     }
 }

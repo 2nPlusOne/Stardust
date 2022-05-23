@@ -14,11 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   particulateName: Stardust Particulate
   particulateType: 0
+  pickupRelativeVelocityMin: 2.5
   pickupReward: 1
   particulatePrefabs:
   - {fileID: 5172795377339559510, guid: 6b0d263ad2a4aa04994bcc9705811c0f, type: 3}
   initialSpeedRange: {x: 0.1, y: 1}
   maxParticulateCount: 300
-  spawnInterval: 0.1
+  spawnInterval: 0.01
   activeParticulateCount: 300
-  particulateSpawnTimer: 0.020287432
+  particulateSpawnTimer: 0.0030292068

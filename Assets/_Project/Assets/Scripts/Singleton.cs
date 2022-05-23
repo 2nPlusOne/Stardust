@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Spotnose
+namespace Spotnose.Stardust
 {
     public abstract class StaticInstance<T> : MonoBehaviour where T : MonoBehaviour
     {

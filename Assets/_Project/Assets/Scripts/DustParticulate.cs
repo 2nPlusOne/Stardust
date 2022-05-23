@@ -1,16 +1,12 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-namespace Spotnose
+namespace Spotnose.Stardust
 {
     public class DustParticulate : MonoBehaviour
     {
         [HideInInspector] public float timeAlive = 0.0f;
         
-        [SerializeField] private ParticulateDetailsSO particulateDetails;
-
+        private ParticulateDetailsSO _particulateDetails;
         private Rigidbody2D _rb2d;
         private PolygonCollider2D _collider;
         
@@ -20,9 +16,10 @@ namespace Spotnose
             _collider = GetComponent<PolygonCollider2D>();
         }
 
-        public void Initialize(Vector3 spawnVelocity)
+        public void Initialize(Vector3 spawnVelocity, ParticulateDetailsSO particulateDetails)
         {
             gameObject.SetActive(true);
+            _particulateDetails = particulateDetails;
             timeAlive = 0.0f;
             _rb2d.velocity = spawnVelocity;
         }
@@ -32,15 +29,16 @@ namespace Spotnose
             timeAlive += Time.deltaTime;
         }
 
-        private void OnCollisionEnter2D(Collision2D col) 
+        private void OnCollisionEnter2D(Collision2D col)
         {
-            if (col.gameObject.TryGetComponent(out Mass mass))
-            {
-                mass.AddMass(particulateDetails.pickupReward);
+            var mass = col.gameObject.GetComponentInParent<Mass>();
+            if (mass is null) return;
+            if (col.relativeVelocity.magnitude < _particulateDetails.pickupRelativeVelocityMin) return;
+            
+            mass.AddMass(_particulateDetails.pickupReward);
 
-                print($"Dust collected! Mass:{mass.GetCurrentMass()}");
-                gameObject.SetActive(false);
-            }
+            print($"Dust collected! Mass:{mass.GetCurrentMass()}");
+            gameObject.SetActive(false);
         }
     }
 }
