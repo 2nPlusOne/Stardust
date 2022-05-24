@@ -6,15 +6,9 @@ namespace Spotnose.Stardust
     public class Mass : MonoBehaviour
     {
         private BodyDetailsSO _bodyDetails;
-        private Rigidbody2D _rb2d;
         private int _minMass;
         private int _maxMass;
         private int _currentMass;
-
-        private void Awake()
-        {
-            _rb2d = GetComponent<Rigidbody2D>();
-        }
 
         public BodyDetailsSO GetBodyDetails() => _bodyDetails;
         
