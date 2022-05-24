@@ -2,15 +2,14 @@ using UnityEngine;
 
 namespace Spotnose.Stardust
 {
-    [RequireComponent(typeof(Rigidbody2D))]
     [DisallowMultipleComponent]
     public class Mass : MonoBehaviour
     {
         private BodyDetailsSO _bodyDetails;
         private Rigidbody2D _rb2d;
-        [SerializeField] private int _minMass;
-        [SerializeField] private int _maxMass;
-        [SerializeField]private int _currentMass;
+        private int _minMass;
+        private int _maxMass;
+        private int _currentMass;
 
         private void Awake()
         {
@@ -36,8 +35,16 @@ namespace Spotnose.Stardust
         {
             if (_currentMass <= _minMass) return false;
             _currentMass -= amount;
-            // set the rigid body mass to a
-            return _currentMass <= 0;
+            Events.OnMassChanged.Invoke(this);
+            Events.OnAfterMassChanged.Invoke(this);
+            
+            if (_currentMass <= _minMass)
+            {
+                Events.OnMassReachedMin.Invoke(this);
+                return true;
+            }
+
+            return false;
         }
         
         public int GetCurrentMass() => _currentMass;
@@ -52,22 +59,24 @@ namespace Spotnose.Stardust
             if (_currentMass >= _maxMass) return false;
             _currentMass += amount;
             Events.OnMassChanged.Invoke(this);
+            Events.OnAfterMassChanged.Invoke(this);
+            
             if (_currentMass >= _maxMass)
             {
-                _currentMass = _maxMass;
-                
+                Events.OnMassReachedMax.Invoke(this);
                 return true;
             }
             return false;
         }
-
+        
         /// Set the current mass to the specified percentage of the max mass.
         /// <param name="percentage"> A value between 0 and 1 specifying the percentage of the max mass to set the current mass to.</param>
-        public void SetMassPercentage(float percentage)
+        public void SetMassPercentage(float percentage) => _currentMass = Mathf.RoundToInt(percentage * _maxMass);
+
+        public float GetMassPercentage()
         {
-            _currentMass = Mathf.RoundToInt(percentage * _maxMass);
+            var massDifference = _maxMass - _minMass;
+            return (float) _currentMass / massDifference;
         }
-        
-        public float GetMassPercentage() => (float) _currentMass / _maxMass;
     }
 }

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f6d34d9a79429f40b5e06acda184d2b, type: 3}
+  m_Name: BodyDetails_Size_3
+  m_EditorClassIdentifier: 
+  celestialBodyType: 0
+  sizeCategory: 4
+  bodyPrefab: {fileID: 4094367886147986663, guid: 30012e68412195847b83aa11b052c177, type: 3}
+  progressionPosition: 3
+  hasPreviousBodyDetails: 1
+  previousBodyDetails: {fileID: 11400000, guid: 81b681783aba1e4489d4238d2cfc83dc, type: 2}
+  hasNextBodyDetails: 0
+  nextBodyDetails: {fileID: 0}
+  baseHealth: 4
+  minMass: 15
+  maxMass: 28
+  minRigidbodyMass: 2
+  maxRigidbodyMass: 4
+  maxTransformScale: 1
+  engineSpriteBaseYOffset: -0.65

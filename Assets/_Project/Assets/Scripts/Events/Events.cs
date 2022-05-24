@@ -10,24 +10,18 @@ namespace Spotnose.Stardust
         public static readonly Evt<GameState> OnBeforeGameStateChanged = new();
         public static readonly Evt<GameState> OnAfterGameStateChanged = new();
         
-        // Mass and Health Events
+        // Mass, Metal and Health Events
         public static readonly Evt<Mass> OnMassChanged = new();
+        public static readonly Evt<Mass> OnAfterMassChanged = new();
+        public static readonly Evt<Mass> OnMassReachedMin = new();
+        public static readonly Evt<Mass> OnMassReachedMax = new();
         public static readonly Evt<int> OnHealthChanged = new();
+        public static readonly Evt<int> OnMetalCountChanged = new();
         
-        // Resources Events
-        public static readonly Evt<int> OnMetalChanged = new();
-        
-        // Events with parameters, using Evt<T>
-        public static readonly Evt<ChangeEngineArgs> OnChangeEngine = new();
-    }
+        // Body Size Changes Events
+        public static readonly Evt<BodyDetailsSO> OnBodyChanged = new();
 
-    public class ChangeEngineArgs : EventArgs
-    {
-        public EngineDetailsSO engine;
-        
-        public ChangeEngineArgs(EngineDetailsSO engine)
-        {
-            this.engine = engine;
-        }
+        // Upgrade Events
+        public static readonly Evt<EngineDetailsSO> OnChangeEngine = new();
     }
 }

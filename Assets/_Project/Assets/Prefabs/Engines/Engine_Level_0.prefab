@@ -47,9 +47,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   engineDetails: {fileID: 11400000, guid: 5925e93a0474128408707cf2f0bb00e9, type: 2}
   engineParticles: {fileID: 896270255394398581}
-  currentEngineTurnSpeed: 0
-  currentEngineForce: 0
-  currentEngineMaxSpeed: 0
+  engineTurnSpeed: 0
+  engineForce: 0
+  engineMaxSpeed: 0
 --- !u!1 &4835338792254824418
 GameObject:
   m_ObjectHideFlags: 0
@@ -4872,6 +4872,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3277437535563923520}
   - component: {fileID: 1746192118679746725}
+  - component: {fileID: 5084579841591358634}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -4947,3 +4948,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &5084579841591358634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6549443007642686293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 389074be0547b974b98dcb420bfee5c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -1,15 +1,16 @@
+using System;
 using UnityEngine;
 
 namespace Spotnose.Stardust
 {
-    [RequireComponent(typeof(PlayerBody))]
+    [RequireComponent(typeof(Player))]
     [DisallowMultipleComponent]
     public class BodyControl : MonoBehaviour
     {
         // engine pivot
         [SerializeField] private Transform enginePivotTransform;
 
-        private PlayerBody _playerBody;
+        private Player _player;
         private Engine _engine;
         private Rigidbody2D _rb2d;
         private float _turnInput;
@@ -19,13 +20,13 @@ namespace Spotnose.Stardust
 
         private void Awake()
         {
-            _playerBody = GetComponent<PlayerBody>();
+            _player = GetComponent<Player>();
             _rb2d = GetComponent<Rigidbody2D>();
         }
-        
+
         private void Start()
         {
-            _engine = _playerBody.CurrentEngine;
+            _engine = _player.CurrentEngine;
         }
 
         private void Update()

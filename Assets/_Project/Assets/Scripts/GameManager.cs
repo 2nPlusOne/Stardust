@@ -12,7 +12,7 @@ namespace Spotnose.Stardust
         [SerializeField] private BodyDetailsSO startingBody;
 
         public GameState CurrentState { get; private set; }
-        public PlayerBody PlayerBody { get; private set; }
+        public Player Player { get; private set; }
 
         private void Start()
         {
@@ -56,9 +56,9 @@ namespace Spotnose.Stardust
 
         private void HandleStarting()
         {
-            PlayerBody = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<PlayerBody>();
-            PlayerBody.SetBodyDetails(startingBody);
-            Events.OnGameStarted.Invoke(PlayerBody.gameObject);
+            Player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
+            Player.SetBodyDetails(startingBody);
+            Events.OnGameStarted.Invoke(Player.gameObject);
             ChangeState(GameState.Gameplay);
         }
 

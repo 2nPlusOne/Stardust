@@ -20,20 +20,22 @@ namespace Spotnose.Stardust
         [SerializeField] private ParticulateDetailsSO dustyDetails;
         [SerializeField] private ParticulateDetailsSO metalDetails;
 
-        private PlayerBody _playerBody;
+        private Player _player;
         private List<Particulate> _activeDustParticulates = new();
         private List<Particulate> _activeMetalParticulates = new();
         private float _particulateCullTimer;
         
         private void Start()
         {
-            _playerBody = PlayerBody.Instance;
+            _player = Player.Instance;
             dustyDetails.activeParticulateCount = 0;
             metalDetails.activeParticulateCount = 0;
         }
         
         private void Update()
         {
+            _player ??= Player.Instance;  // TODO: replace player singleton this with dependency injection
+            
             HandleDustParticulates();
             HandleMetalParticulates();
             HandleParticulateCulling();
@@ -54,7 +56,7 @@ namespace Spotnose.Stardust
 
         private void SpawnDustParticulate()
         {
-            var spawnPosition = Utilities.GenerateRandomPointOutsideCircle(_playerBody.transform.position,
+            var spawnPosition = Utilities.GenerateRandomPointOutsideCircle(_player.transform.position,
                 particulateMinSpawnRadius, particulateMaxSpawnRadius);
             var spawnRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
             var prefab = dustyDetails.GetRandomPrefab();
@@ -83,7 +85,7 @@ namespace Spotnose.Stardust
 
         private void SpawnMetalParticulate()
         {
-            var spawnPosition = Utilities.GenerateRandomPointOutsideCircle(_playerBody.transform.position,
+            var spawnPosition = Utilities.GenerateRandomPointOutsideCircle(_player.transform.position,
                 particulateMinSpawnRadius, particulateMaxSpawnRadius);
             var spawnRotation = Quaternion.Euler(0, 0, Random.Range(0, 360));
             var prefab = metalDetails.GetRandomPrefab();
@@ -115,7 +117,7 @@ namespace Spotnose.Stardust
             var dustParticulatesToRemove = new List<Particulate>();
             foreach (var particulate in _activeDustParticulates)
             {
-                if (!(Vector3.Distance(particulate.transform.position, _playerBody.transform.position) >
+                if (!(Vector3.Distance(particulate.transform.position, _player.transform.position) >
                       particulateCullRadius)) continue;
                 
                 if (particulate.timeAlive < particulateCullLifetime) continue;
@@ -130,7 +132,7 @@ namespace Spotnose.Stardust
             var metalParticulatesToRemove = new List<Particulate>();
             foreach (var particulate in _activeMetalParticulates)
             {
-                if (!(Vector3.Distance(particulate.transform.position, _playerBody.transform.position) >
+                if (!(Vector3.Distance(particulate.transform.position, _player.transform.position) >
                       particulateCullRadius)) continue;
                 
                 if (particulate.timeAlive < particulateCullLifetime) continue;
@@ -146,7 +148,7 @@ namespace Spotnose.Stardust
         private void OnDrawGizmos()
         {
             if (!Application.isPlaying) return;
-            var playerPosition = _playerBody.transform.position;
+            var playerPosition = _player.transform.position;
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(playerPosition, particulateCullRadius);
             Gizmos.color = Color.green;

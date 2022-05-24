@@ -18,7 +18,11 @@ namespace Spotnose.Stardust
     {
         protected override void Awake()
         {
-            if (Instance != null && Instance != this) Destroy(gameObject);
+            if (Instance != null && Instance != this)
+            {
+                Destroy(gameObject);
+                return;
+            }
             base.Awake();
         }
     }

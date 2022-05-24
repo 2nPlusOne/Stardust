@@ -16,6 +16,6 @@ MonoBehaviour:
   engineUpgradeLevel: 0
   enginePrefab: {fileID: 3232127985626162853, guid: d46ddaea1dfccac4bb6d055e7594c369, type: 3}
   engineActivationSound: {fileID: 0}
-  engineTurnSpeed: 3
+  engineTurnSpeed: 2.5
   engineForce: 2
-  engineMaxSpeed: 5
+  engineMaxSpeed: 4

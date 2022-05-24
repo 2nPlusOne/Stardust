@@ -52,5 +52,8 @@ namespace Spotnose.Stardust
 
         [Tooltip("The transform scale of this body when the mass is at maxMass. The scale should be reset when the body progresses to the next size.")]
         public float maxTransformScale;
+        
+        [Tooltip("The base Y offset to use for the engine sprite position when this body is active. As the scale grows this value will be multiplied by the scale.")]
+        public float engineSpriteBaseYOffset;
     }
 }

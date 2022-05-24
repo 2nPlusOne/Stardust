@@ -26,7 +26,7 @@ namespace Spotnose.Stardust
             {
                 case ItemType.Metal:
                     _metal += amount;
-                    Events.OnMetalChanged.Invoke(_metal);
+                    Events.OnMetalCountChanged.Invoke(_metal);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(itemType), itemType, null);
@@ -39,7 +39,7 @@ namespace Spotnose.Stardust
             {
                 case ItemType.Metal:
                     _metal -= amount;
-                    Events.OnMetalChanged.Invoke(_metal);
+                    Events.OnMetalCountChanged.Invoke(_metal);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(itemType), itemType, null);

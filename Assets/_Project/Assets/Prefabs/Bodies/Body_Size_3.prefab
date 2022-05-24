@@ -1,12 +1,16 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &154888026346444892
+--- !u!1001 &8434952609424641378
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 856729404952798535, guid: d4f649455373b344e8760f8da2d9c8f3, type: 3}
+      propertyPath: m_Radius
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 1257628878177914259, guid: d4f649455373b344e8760f8da2d9c8f3, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -53,7 +57,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5610611382448597381, guid: d4f649455373b344e8760f8da2d9c8f3, type: 3}
       propertyPath: m_Name
-      value: Body_Size_0
+      value: Body_Size_3
       objectReference: {fileID: 0}
+    - target: {fileID: 7107873414726947874, guid: d4f649455373b344e8760f8da2d9c8f3, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 4e90ce3d2bc30514c945b65bfc61cea2, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4f649455373b344e8760f8da2d9c8f3, type: 3}

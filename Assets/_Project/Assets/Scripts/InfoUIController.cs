@@ -13,7 +13,7 @@ namespace Spotnose.Stardust
         private void OnEnable()
         {
             Events.OnMassChanged.AddListener(OnMassChanged);
-            Events.OnMetalChanged.AddListener(OnMetalChanged);
+            Events.OnMetalCountChanged.AddListener(OnMetalChanged);
         }
 
         private void OnMassChanged(Mass mass)
