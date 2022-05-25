@@ -47,8 +47,14 @@ namespace Spotnose.Stardust
             sizeText.text = bodyDetails.sizeCategory.ToString();
             bodySprite.sprite = bodyDetails.sprite;
 
+            if (!bodyDetails.hasNextBodyDetails)
+            {
+                massProgressBar.fillAmount = 1;
+                nextSizeProgressionText.text = "To Maximum Mass";
+                return;
+            }
             var nextBody = bodyDetails.nextBodyDetails;
-            var nextText = $"TO {nextBody.sizeCategory.ToString()} {nextBody.celestialBodyType.ToString()}";
+            var nextText = $"To {nextBody.sizeCategory.ToString()} {nextBody.celestialBodyType.ToString()}";
             nextSizeProgressionText.text = nextText;
         }
 
