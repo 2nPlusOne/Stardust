@@ -11,6 +11,7 @@ namespace Spotnose.Stardust
         [Header("PLANET BASIC CONFIGURATION")]
         public CelestialBodyType celestialBodyType;
         public SizeCategory sizeCategory;
+        public Sprite sprite;
 
         [Tooltip("The prefab to use for this body that will be parented to the PlayerBody game object.")]
         public GameObject bodyPrefab;

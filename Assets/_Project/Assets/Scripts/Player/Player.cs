@@ -48,21 +48,23 @@ namespace Spotnose.Stardust
         {
             var bodyDetails = mass.GetBodyDetails();
             if (!bodyDetails.hasNextBodyDetails) return;
-            Instance.SetBodyDetails(bodyDetails.nextBodyDetails);
+            SetBodyDetails(bodyDetails.nextBodyDetails);
             SetBody(bodyDetails.nextBodyDetails.bodyPrefab);
+            Events.OnBodyChanged.Invoke(bodyDetails.nextBodyDetails, mass);
         }
 
         private void OnMassReachedMin(Mass mass)
         {
             var bodyDetails = mass.GetBodyDetails();
             if (!bodyDetails.hasPreviousBodyDetails) return;
-            Instance.SetBodyDetails(bodyDetails.previousBodyDetails);
+            SetBodyDetails(bodyDetails.previousBodyDetails);
             SetBody(bodyDetails.previousBodyDetails.bodyPrefab);
+            Events.OnBodyChanged.Invoke(bodyDetails.previousBodyDetails, mass);
         }
 
         private void SetBody(GameObject bodyPrefab)
         {
-            print("Setting body to: " + bodyPrefab.name.ToString().Trim() + ".");
+            print("Setting body to: " + bodyPrefab.name.Trim() + ".");
             foreach (Transform child in bodyParentTransform) Destroy(child.gameObject);
             var newBody = Instantiate(bodyPrefab, bodyParentTransform);
         }

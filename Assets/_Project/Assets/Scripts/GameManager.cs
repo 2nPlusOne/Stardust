@@ -64,7 +64,7 @@ namespace Spotnose.Stardust
 
         private void HandleGameplay()
         {
-            throw new NotImplementedException();
+            print("Changing state to gameplay...");
         }
 
         private void HandleUpgradeMenu()

@@ -6,71 +6,93 @@ namespace Spotnose.Stardust
     public class Mass : MonoBehaviour
     {
         private BodyDetailsSO _bodyDetails;
-        private int _minMass;
-        private int _maxMass;
-        private int _currentMass;
+        [SerializeField] private int _currentMass;
 
         public BodyDetailsSO GetBodyDetails() => _bodyDetails;
         
         public void SetBodyDetails(BodyDetailsSO bodyDetails)
         {
             _bodyDetails = bodyDetails;
-            _minMass = _bodyDetails.minMass;
-            _maxMass = bodyDetails.maxMass;
-            _currentMass = bodyDetails.minMass;
+        }
+
+        public int GetCurrentMass() => _currentMass;
+
+        /// <summary>
+        /// Allowed a user to add mass to this mass component, increasing its current mass.
+        /// </summary>
+        /// <param name="amount"> The amount to increase the current mass by.</param>
+        public void AddMass(int amount)
+        {
+            if (_currentMass >= _bodyDetails.maxMass) return;
+            _currentMass += amount;
+            
+            if (_currentMass >= _bodyDetails.maxMass) Events.OnMassReachedMax.Invoke(this);
+
+            Events.OnMassChanged.Invoke(this);
         }
 
         /// <summary>
         /// Allowed a user to reduce the current mass of this mass component.
         /// </summary>
         /// <param name="amount"> The amount to reduce the current mass by.</param>
-        /// <returns> A bool for whether the reduction caused the current mass to be less than or equal to the min mass.</returns>
-        public bool ReduceMass(int amount)
+        public void ReduceMass(int amount)
         {
-            if (_currentMass <= _minMass) return false;
+            if (_currentMass - amount < 0) return;
+            if (_currentMass <= _bodyDetails.minMass) return;
             _currentMass -= amount;
-            Events.OnMassChanged.Invoke(this);
-            Events.OnAfterMassChanged.Invoke(this);
             
-            if (_currentMass <= _minMass)
-            {
-                Events.OnMassReachedMin.Invoke(this);
-                return true;
-            }
+            if (_currentMass <= _bodyDetails.minMass) Events.OnMassReachedMin.Invoke(this);
+            
+            Events.OnMassChanged.Invoke(this);
+        }
 
-            return false;
-        }
-        
-        public int GetCurrentMass() => _currentMass;
-        
-        /// <summary>
-        /// Allowed a user to add mass to this mass component, increasing its current mass.
-        /// </summary>
-        /// <param name="amount"> The amount to increase the current mass by.</param>
-        /// <returns> A bool for whether the increase caused the current mass to be greater than or equal to the max mass.</returns>
-        public bool AddMass(int amount)
-        {
-            if (_currentMass >= _maxMass) return false;
-            _currentMass += amount;
-            Events.OnMassChanged.Invoke(this);
-            Events.OnAfterMassChanged.Invoke(this);
-            
-            if (_currentMass >= _maxMass)
-            {
-                Events.OnMassReachedMax.Invoke(this);
-                return true;
-            }
-            return false;
-        }
-        
         /// Set the current mass to the specified percentage of the max mass.
         /// <param name="percentage"> A value between 0 and 1 specifying the percentage of the max mass to set the current mass to.</param>
-        public void SetMassPercentage(float percentage) => _currentMass = Mathf.RoundToInt(percentage * _maxMass);
+        public void SetMassPercentage(float percentage)
+        {
+            if (percentage is < 0 or > 1) return;
+            _currentMass = Mathf.RoundToInt(percentage * _bodyDetails.maxMass);
+            
+            if (_currentMass >= _bodyDetails.maxMass) Events.OnMassReachedMax.Invoke(this);
+            if (_currentMass <= _bodyDetails.minMass) Events.OnMassReachedMin.Invoke(this);
+
+            Events.OnMassChanged.Invoke(this);
+        }
 
         public float GetMassPercentage()
         {
-            var massDifference = _maxMass - _minMass;
-            return (float) _currentMass / massDifference;
+            var massDifference = _bodyDetails.maxMass - _bodyDetails.minMass;
+            Debug.Log($"Mass difference for {_bodyDetails.name}: {massDifference}");
+            Debug.Log("Mass Percentage: " + (_currentMass - _bodyDetails.minMass) / massDifference);
+            return (float) (_currentMass - _bodyDetails.minMass) / massDifference;
         }
+        
+#if UNITY_EDITOR
+        
+        [ContextMenu("Add 5 Mass")]
+        private void Add5Mass() => AddMass(5);
+        
+        [ContextMenu("Reduce 5 Mass")]
+        private void Reduce5Mass() => ReduceMass(5);
+        
+        [ContextMenu("Add 10 Mass")]
+        private void AddMass10() => AddMass(10);
+        
+        [ContextMenu("Reduce 10 Mass")]
+        private void ReduceMass10() => ReduceMass(10);
+        
+        [ContextMenu("Add 20 Mass")]
+        private void AddMass20() => AddMass(20);
+        
+        [ContextMenu("Reduce 20 Mass")]
+        private void ReduceMass20() => ReduceMass(20);
+        
+        [ContextMenu("Add 30 Mass")]
+        private void AddMass30() => AddMass(30);
+        
+        [ContextMenu("Reduce 30 Mass")]
+        private void ReduceMass30() => ReduceMass(30);
+        
+#endif
     }
 }

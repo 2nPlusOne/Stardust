@@ -30,9 +30,8 @@ namespace Spotnose.Stardust
             gameObject.transform.localPosition = new Vector3(0, offset, 0);
         }
 
-        private void OnBodyChanged(BodyDetailsSO bodyDetails)
+        private void OnBodyChanged(BodyDetailsSO bodyDetails, Mass mass)
         {
-            var mass = Player.Instance.Mass;
             var difference = bodyDetails.maxMass - bodyDetails.minMass;
             var massUntilMax = bodyDetails.maxMass - mass.GetCurrentMass();
             var massPercent = 1f - (float) massUntilMax / difference;
