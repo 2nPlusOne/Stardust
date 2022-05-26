@@ -7,7 +7,7 @@ namespace Spotnose.Stardust
 {
     public class GameManager : PersistentSingleton<GameManager>
     {
-        [SerializeField] private GameObject playerPrefab;
+        [SerializeField] private GameObject playerGameObject;
         
         [SerializeField] private BodyDetailsSO startingBody;
 
@@ -16,12 +16,13 @@ namespace Spotnose.Stardust
 
         private void Start()
         {
+            Player = playerGameObject.GetComponent<Player>();
             ChangeState(GameState.Starting);
         }
 
         public void ChangeState(GameState newState)
         {
-            Events.OnBeforeGameStateChanged.Invoke(newState);
+            Events.OnBeforeGameStateChanged.Invoke(CurrentState);
             
             CurrentState = newState;
             switch (newState)
@@ -47,6 +48,8 @@ namespace Spotnose.Stardust
                 default:
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
             }
+            
+            Events.OnAfterGameStateChanged.Invoke(newState);
         }
 
         private void HandleMainMenu()
@@ -56,9 +59,8 @@ namespace Spotnose.Stardust
 
         private void HandleStarting()
         {
-            Player = Instantiate(playerPrefab, Vector3.zero, Quaternion.identity).GetComponent<Player>();
+            Events.OnGameStarted.Invoke(playerGameObject);
             Player.SetBodyDetails(startingBody);
-            Events.OnGameStarted.Invoke(Player.gameObject);
             ChangeState(GameState.Gameplay);
         }
 

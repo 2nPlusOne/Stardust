@@ -6,7 +6,7 @@ namespace Spotnose.Stardust
     public class Mass : MonoBehaviour
     {
         private BodyDetailsSO _bodyDetails;
-        [SerializeField] private int _currentMass;
+        private int _currentMass;
 
         public BodyDetailsSO GetBodyDetails() => _bodyDetails;
         
