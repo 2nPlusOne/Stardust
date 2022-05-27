@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 211870860a3b3ac4ca333b0fed9e9d35, type: 3}
+  m_Name: DebrisDetails_Asteroid_0
+  m_EditorClassIdentifier: 
+  celestialBodyType: 0
+  sizeCategory: 0
+  sprite: {fileID: 0}
+  debrisPrefabs: []
+  absorbRelativeVelocityMin: 2
+  absorbReward: 0
+  initialSpeedRange: {x: 1.5, y: 3}
+  maxParticulateCount: 20
+  spawnInterval: 0.01
+  activeDebrisCount: 0
+  debrisSpawnTimer: 0

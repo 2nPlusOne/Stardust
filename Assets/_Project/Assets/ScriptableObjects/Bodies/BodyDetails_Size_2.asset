@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BodyDetails_Size_2
   m_EditorClassIdentifier: 
   celestialBodyType: 0
-  sizeCategory: 3
+  sizeCategory: 5
   sprite: {fileID: 21300000, guid: 5ebf103a9a0e25b449820010eefe7ff0, type: 3}
   bodyPrefab: {fileID: 4094367886147986663, guid: 7de373d10008a7d47823f96cd157f7c3, type: 3}
   progressionPosition: 2
@@ -27,4 +27,4 @@ MonoBehaviour:
   minRigidbodyMass: 1.8
   maxRigidbodyMass: 5.4
   maxTransformScale: 1.3
-  engineSpriteBaseYOffset: -0.53
+  engineSpriteBaseYOffset: -0.46

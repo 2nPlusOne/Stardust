@@ -16,7 +16,7 @@ namespace Spotnose.Stardust
             _collider = GetComponent<PolygonCollider2D>();
         }
 
-        public virtual void Initialize(Vector3 spawnVelocity, ParticulateDetailsSO particulateDetails)
+        public void Initialize(Vector3 spawnVelocity, ParticulateDetailsSO particulateDetails)
         {
             gameObject.SetActive(true);
             ParticulateDetails = particulateDetails;

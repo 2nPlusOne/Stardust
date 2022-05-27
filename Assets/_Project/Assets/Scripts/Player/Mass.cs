@@ -93,6 +93,12 @@ namespace Spotnose.Stardust
         [ContextMenu("Reduce 30 Mass")]
         private void ReduceMass30() => ReduceMass(30);
         
+        [ContextMenu("Add 60 Mass")]
+        private void AddMass60() => AddMass(60);
+        
+        [ContextMenu("Reduce 60 Mass")]
+        private void ReduceMass60() => ReduceMass(60);
+
 #endif
     }
 }

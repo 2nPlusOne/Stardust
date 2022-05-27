@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Dust_EmissionShader
+  m_Name: Metal_EmissionShader
   m_Shader: {fileID: -6465566751694194690, guid: 2a9b1fe0f3a47ee489d889f6b8f1a0e1, type: 3}
   m_ValidKeywords: []
   m_InvalidKeywords: []
@@ -21,7 +21,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: ef042558887755945845c0db72fb043d, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -39,5 +39,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _EmissionColor: {r: 3.4415908, g: 2.7388575, b: 0.4865076, a: 1}
+    - _EmissionColor: {r: 14.364024, g: 22.888762, b: 132.3988, a: 1}
   m_BuildTextureStacks: []
