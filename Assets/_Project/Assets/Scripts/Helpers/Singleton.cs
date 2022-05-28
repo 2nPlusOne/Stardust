@@ -5,7 +5,12 @@ namespace Spotnose.Stardust
     public abstract class StaticInstance<T> : MonoBehaviour where T : MonoBehaviour
     {
         public static T Instance { get; private set; }
-        protected virtual void Awake() => Instance = this as T;
+
+        protected virtual void Awake()
+        {
+            if (Instance is null)
+                Instance = this as T;
+        }
 
         protected void OnApplicationQuit()
         {
@@ -18,7 +23,7 @@ namespace Spotnose.Stardust
     {
         protected override void Awake()
         {
-            if (Instance != null && Instance != this)
+            if (Instance != null)
             {
                 Destroy(gameObject);
                 return;

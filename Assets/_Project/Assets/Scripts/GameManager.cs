@@ -13,17 +13,58 @@ namespace Spotnose.Stardust
 
         public GameState CurrentState { get; private set; }
         public Player Player { get; private set; }
+        
+        private void OnEnable()
+        {
+            Events.OnPauseMenuInputDown.AddListener(OnPauseMenuInputDown);
+            Events.OnUpgradeMenuInputDown.AddListener(OnUpgradeMenuInputDown);
+        }
+        
+        private void OnDisable()
+        {
+            Events.OnPauseMenuInputDown.RemoveListener(OnPauseMenuInputDown);
+            Events.OnUpgradeMenuInputDown.RemoveListener(OnUpgradeMenuInputDown);
+        }
 
         private void Start()
         {
             Player = playerGameObject.GetComponent<Player>();
             ChangeState(GameState.Starting);
         }
+        
+        private void OnPauseMenuInputDown()
+        {
+            if (CurrentState == GameState.Paused)
+            {
+                ChangeState(GameState.Playing);
+                Events.OnPauseMenuClosed.Invoke();
+            }
+            else
+            {
+                ChangeState(GameState.Paused);
+                Events.OnPauseMenuOpened.Invoke();
+            }
+        }
+        
+        private void OnUpgradeMenuInputDown()
+        {
+            if (CurrentState == GameState.UpgradeMenu)
+            {
+                ChangeState(GameState.Playing);
+                Events.OnUpgradeMenuClosed.Invoke();
+            }
+            else
+            {
+                ChangeState(GameState.UpgradeMenu);
+                Events.OnUpgradeMenuOpened.Invoke();
+            }
+        }
 
         public void ChangeState(GameState newState)
         {
-            Events.OnBeforeGameStateChanged.Invoke(CurrentState);
+            Events.OnBeforeGameStateChanged.Invoke(CurrentState, newState);
             
+            var oldState = CurrentState;
             CurrentState = newState;
             switch (newState)
             {
@@ -33,8 +74,8 @@ namespace Spotnose.Stardust
                 case GameState.Starting:
                     HandleStarting();
                     break;
-                case GameState.Gameplay:
-                    HandleGameplay();
+                case GameState.Playing:
+                    HandlePlaying();
                     break;
                 case GameState.UpgradeMenu:
                     HandleUpgradeMenu();
@@ -49,34 +90,38 @@ namespace Spotnose.Stardust
                     throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
             }
             
-            Events.OnAfterGameStateChanged.Invoke(newState);
+            Events.OnAfterGameStateChanged.Invoke(oldState, newState);
         }
 
         private void HandleMainMenu()
         {
-            throw new NotImplementedException();
+            print("Changing state to main menu...");
         }
 
         private void HandleStarting()
         {
+            print("Changing state to starting...");
             Events.OnGameStarted.Invoke(playerGameObject);
             Player.SetBodyDetails(startingBody);
-            ChangeState(GameState.Gameplay);
+            ChangeState(GameState.Playing);
         }
 
-        private void HandleGameplay()
+        private void HandlePlaying()
         {
-            print("Changing state to gameplay...");
+            print("Changing state to playing...");
+            Time.timeScale = 1f;
         }
 
         private void HandleUpgradeMenu()
         {
-            throw new NotImplementedException();
+            print("Changing state to upgrade menu...");
+            Time.timeScale = 0f;
         }
 
         private void HandlePaused()
         {
-            throw new NotImplementedException();
+            print("Changing state to paused...");
+            Time.timeScale = 0f;
         }
 
         private void HandleGameOver()
@@ -90,7 +135,7 @@ namespace Spotnose.Stardust
     {
         MainMenu,
         Starting,
-        Gameplay,
+        Playing,
         UpgradeMenu,
         Paused,
         GameOver

@@ -3,8 +3,6 @@ using UnityEngine;
 
 namespace Spotnose.Stardust
 {
-    public enum ParticulateType { DustParticulate, MetalParticulate, WaterParticulate }
-    
     [CreateAssetMenu(fileName = "ParticulateDetails_", menuName = "Scriptable Objects/Particulate Details")]
     public class ParticulateDetailsSO : ScriptableObject
     {

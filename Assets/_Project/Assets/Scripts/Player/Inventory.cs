@@ -1,49 +1,73 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Spotnose.Stardust
 {
-    public enum ItemType { Metal }
-
     public class Inventory : MonoBehaviour
     {
-        private int _metal;
+        [SerializeField] private int _metal;
 
-        public int GetItemCount(ItemType itemType)
+        public int GetItemCount(InventoryItemType inventoryItemType)
         {
-            return itemType switch
+            return inventoryItemType switch
             {
-                ItemType.Metal => _metal,
+                InventoryItemType.Metal => _metal,
                 _ => 0
             };
         }
 
-        public void AddItem(ItemType itemType, int amount)
+        public void AddItem(InventoryItemType inventoryItemType, int amount)
         {
-            switch (itemType)
+            switch (inventoryItemType)
             {
-                case ItemType.Metal:
+                case InventoryItemType.Metal:
                     _metal += amount;
                     Events.OnMetalCountChanged.Invoke(_metal);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(itemType), itemType, null);
+                    throw new ArgumentOutOfRangeException(nameof(inventoryItemType), inventoryItemType, null);
             }
         }
         
-        public void RemoveItem(ItemType itemType, int amount)
+        public void RemoveItem(InventoryItemType inventoryItemType, int amount)
         {
-            switch (itemType)
+            switch (inventoryItemType)
             {
-                case ItemType.Metal:
-                    _metal -= amount;
+                case InventoryItemType.Metal:
+                    _metal = Mathf.Max(0, _metal - amount);
                     Events.OnMetalCountChanged.Invoke(_metal);
                     break;
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(itemType), itemType, null);
+                    throw new ArgumentOutOfRangeException(nameof(inventoryItemType), inventoryItemType, null);
             }
         }
+        
+#if UNITY_EDITOR
+        
+        [ContextMenu("Add 5 Metal")]
+        private void Add5Metal() => AddItem(InventoryItemType.Metal, 5);
+        
+        [ContextMenu("Remove 5 Metal")]
+        private void Remove5Metal() => RemoveItem(InventoryItemType.Metal, 5);
+        
+        [ContextMenu("Add 10 Metal")]
+        private void Add10Metal() => AddItem(InventoryItemType.Metal, 10);
+        
+        [ContextMenu("Remove 10 Metal")]
+        private void Remove10Metal() => RemoveItem(InventoryItemType.Metal, 10);
+        
+        [ContextMenu("Add 20 Metal")]
+        private void Add20Metal() => AddItem(InventoryItemType.Metal, 20);
+        
+        [ContextMenu("Remove 20 Metal")]
+        private void Remove20Metal() => RemoveItem(InventoryItemType.Metal, 20);
+        
+        [ContextMenu("Add 50 Metal")]
+        private void Add50Metal() => AddItem(InventoryItemType.Metal, 50);
+        
+        [ContextMenu("Remove 50 Metal")]
+        private void Remove50Metal() => RemoveItem(InventoryItemType.Metal, 50);
+
+#endif
     }
 }

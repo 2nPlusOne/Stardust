@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d999cfbb6bb9a4ca4fce554305a57e, type: 3}
   m_Name: EngineDetails_Level_1
   m_EditorClassIdentifier: 
-  engineName: TK-L35 "Reliant" Engine
-  engineUpgradeLevel: 1
+  engineName: TK-L35 "Reliant"
+  engineIcon: {fileID: 21300000, guid: a6cc96112ca0833438f944473424630d, type: 3}
   enginePrefab: {fileID: 3232127985626162853, guid: 19c76efb7bd12104bb9fd19934d2076a, type: 3}
+  engineUpgradeLevel: 1
+  upgradeRequiresItemType: 0
+  upgradeCost: 20
   engineActivationSound: {fileID: 0}
   engineTurnSpeed: 3
   engineForce: 10

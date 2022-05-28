@@ -1,5 +1,7 @@
 namespace Spotnose.Stardust
 {
+    public enum ParticulateType { DustParticulate, MetalParticulate, WaterParticulate }
+    
     public enum CelestialBodyType
     {
         Asteroid = 0,
@@ -19,4 +21,6 @@ namespace Spotnose.Stardust
         Enormous = 7,
         Colossal = 8
     }
+    
+    public enum InventoryItemType { Metal }
 }

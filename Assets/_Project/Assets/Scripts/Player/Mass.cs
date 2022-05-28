@@ -37,8 +37,13 @@ namespace Spotnose.Stardust
         /// <param name="amount"> The amount to reduce the current mass by.</param>
         public void ReduceMass(int amount)
         {
-            if (_currentMass - amount < 0) return;
-            if (_currentMass <= _bodyDetails.minMass) return;
+            if (_currentMass - amount < 0)
+            {
+                _currentMass = 0;
+                Events.OnMassReachedZero.Invoke(this);
+                return;
+            }
+            //if (_currentMass <= _bodyDetails.minMass) return;
             _currentMass -= amount;
             
             if (_currentMass <= _bodyDetails.minMass) Events.OnMassReachedMin.Invoke(this);

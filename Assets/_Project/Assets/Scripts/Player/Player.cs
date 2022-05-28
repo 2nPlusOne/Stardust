@@ -3,6 +3,7 @@ using UnityEngine;
 namespace Spotnose.Stardust
 {
     [RequireComponent(typeof(Health), typeof(Mass), typeof(Inventory))]
+    [RequireComponent(typeof(BodyControl), typeof(Rigidbody2D))]
     [DisallowMultipleComponent]
     public class Player : Singleton<Player>
     {
@@ -15,16 +16,20 @@ namespace Spotnose.Stardust
         public Engine CurrentEngine { get; private set; }
         public Rigidbody2D Rb2d { get; private set; }
 
+        private BodyControl _bodyControl;
+
         private void OnEnable()
         {
             Events.OnMassReachedMax.AddListener(OnMassReachedMax);
             Events.OnMassReachedMin.AddListener(OnMassReachedMin);
+            Events.OnEngineUpgradePurchased.AddListener(OnEngineUpgradePurchased);
         }
-        
+
         private void OnDisable()
         {
             Events.OnMassReachedMax.RemoveListener(OnMassReachedMax);
             Events.OnMassReachedMin.RemoveListener(OnMassReachedMin);
+            Events.OnEngineUpgradePurchased.RemoveListener(OnEngineUpgradePurchased);
         }
 
         protected override void Awake()
@@ -35,6 +40,7 @@ namespace Spotnose.Stardust
             Inventory = GetComponent<Inventory>();
             CurrentEngine = GetComponentInChildren<Engine>();
             Rb2d = GetComponent<Rigidbody2D>();
+            _bodyControl = GetComponent<BodyControl>();
         }
 
         public void SetBodyDetails(BodyDetailsSO bodyDetails)
@@ -68,10 +74,21 @@ namespace Spotnose.Stardust
             foreach (Transform child in bodyParentTransform) Destroy(child.gameObject);
             var newBody = Instantiate(bodyPrefab, bodyParentTransform);
         }
-        
-        private void SetEngine(GameObject enginePrefab)
+
+        private void OnEngineUpgradePurchased(EngineDetailsSO engineDetails)
         {
-            
+            SetEngine(engineDetails);
+        }
+
+        private void SetEngine(EngineDetailsSO engineDetails)
+        {
+            print("Setting engine to: " + engineDetails.enginePrefab.name.Trim() + ".");
+            var newEngine = Instantiate(engineDetails.enginePrefab, engineParentTransform).GetComponent<Engine>();
+            _bodyControl.SetEngine(newEngine);
+            Destroy(CurrentEngine.gameObject);
+            CurrentEngine = newEngine;
+
+            Events.OnEngineChanged.Invoke(engineDetails);
         }
     }
 }

@@ -9,8 +9,8 @@ namespace Spotnose.Stardust
             var inventory = collision.gameObject.GetComponentInParent<Inventory>();
             if (inventory is null) return;
             
-            inventory.AddItem(ItemType.Metal, ParticulateDetails.pickupReward);
-            print($"Metal collected! Metal: {inventory.GetItemCount(ItemType.Metal)}");
+            inventory.AddItem(InventoryItemType.Metal, ParticulateDetails.pickupReward);
+            print($"Metal collected! Metal: {inventory.GetItemCount(InventoryItemType.Metal)}");
             
             gameObject.SetActive(false);
         }

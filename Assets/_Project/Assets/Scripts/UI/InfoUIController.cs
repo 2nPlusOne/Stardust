@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -22,21 +23,22 @@ namespace Spotnose.Stardust
         private void OnEnable()
         {
             Events.OnMassChanged.AddListener(OnMassChanged);
-            Events.OnBodyChanged.AddListener(OnBodyChanged);
             Events.OnMetalCountChanged.AddListener(OnMetalChanged);
+            Events.OnBodyChanged.AddListener(OnBodyChanged);
+            engineUpgradeButton.onClick.AddListener(OnButtonClick);
         }
 
         private void OnDisable()
         {
             Events.OnMassChanged.RemoveListener(OnMassChanged);
-            Events.OnBodyChanged.RemoveListener(OnBodyChanged);
             Events.OnMetalCountChanged.RemoveListener(OnMetalChanged);
+            Events.OnBodyChanged.RemoveListener(OnBodyChanged);
+            engineUpgradeButton.onClick.RemoveListener(OnButtonClick);
         }
 
         private void OnMassChanged(Mass mass)
         {
             totalMassText.text = mass.GetCurrentMass().ToString();
-
             LerpProgressBar(mass);
         }
 
@@ -46,6 +48,7 @@ namespace Spotnose.Stardust
             typeText.text = bodyDetails.sizeOrder.celestialBodyType.ToString();
             sizeText.text = bodyDetails.sizeOrder.sizeCategory.ToString();
             bodySprite.sprite = bodyDetails.sprite;
+            bodySprite.SetNativeSize();
 
             if (!bodyDetails.hasNextBodyDetails)
             {
@@ -58,10 +61,9 @@ namespace Spotnose.Stardust
             nextSizeProgressionText.text = nextText;
         }
 
-        private void OnMetalChanged(int metalCount)
-        {
-            metalCountText.text = metalCountText.text = metalCount.ToString();
-        }
+        private void OnMetalChanged(int metalCount) => metalCountText.text = metalCountText.text = metalCount.ToString();
+
+        private void OnButtonClick() => Events.OnUpgradeMenuInputDown.Invoke();
 
         private void LerpProgressBar(Mass mass)
         {

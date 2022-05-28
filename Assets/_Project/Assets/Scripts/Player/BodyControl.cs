@@ -47,6 +47,14 @@ namespace Spotnose.Stardust
         
             enginePivotTransform.Rotate(Vector3.forward * (_engine.engineTurnSpeed * _turnInput));
         }
+        
+        public void SetEngine(Engine engine)
+        {
+            if (_engine.engineParticles.isPlaying)
+                _engine.engineParticles.Stop();
+            
+            _engine = engine;
+        }
 
         private void HandleParticles()
         {
