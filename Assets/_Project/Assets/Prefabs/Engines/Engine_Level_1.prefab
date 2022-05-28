@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8331768210602173274}
   - component: {fileID: 7827774387745010432}
   m_Layer: 0
-  m_Name: Engine_Level_0
+  m_Name: Engine_Level_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14576efaa13342a478760d7bd61822ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  engineDetails: {fileID: 11400000, guid: 5925e93a0474128408707cf2f0bb00e9, type: 2}
+  engineDetails: {fileID: 11400000, guid: 38b775d7ccadd9144857ac19fbdb744e, type: 2}
   engineParticles: {fileID: 896270255394398581}
   engineTurnSpeed: 0
   engineForce: 0
@@ -76,7 +76,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4835338792254824418}
   m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.004, y: -0.125, z: 0}
+  m_LocalPosition: {x: 0, y: -0.345, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -166,14 +166,14 @@ ParticleSystem:
     startLifetime:
       serializedVersion: 2
       minMaxState: 3
-      scalar: 0.25
-      minScalar: 0.03
+      scalar: 0.5
+      minScalar: 0.1
       maxCurve:
         serializedVersion: 2
         m_Curve:
         - serializedVersion: 3
           time: 0
-          value: 1
+          value: 0.13437462
           inSlope: 0
           outSlope: 0
           tangentMode: 0
@@ -182,9 +182,9 @@ ParticleSystem:
           outWeight: 0.33333334
         - serializedVersion: 3
           time: 1
-          value: 1
-          inSlope: 0
-          outSlope: 0
+          value: 0.28125
+          inSlope: -0.009361312
+          outSlope: -0.009361312
           tangentMode: 0
           weightedMode: 0
           inWeight: 0.33333334
@@ -712,7 +712,7 @@ ParticleSystem:
     serializedVersion: 6
     enabled: 1
     type: 4
-    angle: 10.69
+    angle: 16.39
     length: 5
     boxThickness: {x: 0, y: 0, z: 0}
     radiusThickness: 1
@@ -798,7 +798,7 @@ ParticleSystem:
     sphericalDirectionAmount: 0
     randomPositionAmount: 0
     radius:
-      value: 0.36
+      value: 1
       mode: 0
       spread: 0
       speed:
@@ -917,7 +917,7 @@ ParticleSystem:
     rateOverTime:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 150
+      scalar: 250
       minScalar: 10
       maxCurve:
         serializedVersion: 2
@@ -4937,7 +4937,7 @@ SpriteRenderer:
   m_SortingLayerID: -1571690785
   m_SortingLayer: 2
   m_SortingOrder: -1
-  m_Sprite: {fileID: 21300000, guid: cef7d5ae849e1b243b1628e64bca178e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 22d03f3055c18e2418cbeec313cef904, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

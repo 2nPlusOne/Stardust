@@ -43,8 +43,8 @@ namespace Spotnose.Stardust
         private void OnBodyChanged(BodyDetailsSO bodyDetails, Mass mass)
         {
             massProgressBar.fillAmount = mass.GetMassPercentage();
-            typeText.text = bodyDetails.celestialBodyType.ToString();
-            sizeText.text = bodyDetails.sizeCategory.ToString();
+            typeText.text = bodyDetails.sizeOrder.celestialBodyType.ToString();
+            sizeText.text = bodyDetails.sizeOrder.sizeCategory.ToString();
             bodySprite.sprite = bodyDetails.sprite;
 
             if (!bodyDetails.hasNextBodyDetails)
@@ -54,7 +54,7 @@ namespace Spotnose.Stardust
                 return;
             }
             var nextBody = bodyDetails.nextBodyDetails;
-            var nextText = $"To {nextBody.sizeCategory.ToString()} {nextBody.celestialBodyType.ToString()}";
+            var nextText = $"To {nextBody.sizeOrder.sizeCategory.ToString()} {nextBody.sizeOrder.celestialBodyType.ToString()}";
             nextSizeProgressionText.text = nextText;
         }
 

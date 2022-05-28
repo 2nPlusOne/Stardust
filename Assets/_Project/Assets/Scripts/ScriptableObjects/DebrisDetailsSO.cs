@@ -8,14 +8,16 @@ namespace Spotnose.Stardust
     {
         [Space(10)]
         [Header("DEBRIS BASIC CONFIGURATION")]
-        public CelestialBodyType celestialBodyType;
-        public SizeCategory sizeCategory;
+        public SizeOrder sizeOrder;
         public Sprite sprite;
 
         [Tooltip("The prefabs to use for this debris")]
         public List<GameObject> debrisPrefabs;
 
         [Header("ABSORPTION CONFIGURATION")]
+        [Tooltip("The minimum size order that this debris can be absorbed by")]
+        public SizeOrder minAbsorptionSizeOrder;
+        
         [Tooltip("Minimum impact relative velocity needed to absorb this debris")]
         public float absorbRelativeVelocityMin;
 
@@ -38,10 +40,5 @@ namespace Spotnose.Stardust
         
         public GameObject GetRandomPrefab() => debrisPrefabs[UnityEngine.Random.Range(0, debrisPrefabs.Count)];
         public float GetRandomSpeed() => UnityEngine.Random.Range(initialSpeedRange.x, initialSpeedRange.y);
-        
-        /// <summary>
-        /// Returns the size order of this body. The size order is defined by (int) CelestialBodyType + (int) SizeCategory.
-        /// </summary>
-        public int GetSizeOrder() => (int) celestialBodyType + (int) sizeCategory;
     }
 }

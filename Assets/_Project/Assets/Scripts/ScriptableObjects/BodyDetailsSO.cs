@@ -1,28 +1,13 @@
+using System;
 using UnityEngine;
 
 namespace Spotnose.Stardust
 {
-    public enum CelestialBodyType { Asteroid = 0, Moon = 10, Planet = 20}
-
-    public enum SizeCategory
-    {
-        Minuscule = 0,
-        Tiny = 1, 
-        Small = 2, 
-        Medium = 3, 
-        Large = 4, 
-        Huge = 5, 
-        Gigantic = 6, 
-        Enormous = 7, 
-        Colossal = 8
-    }
-    
     [CreateAssetMenu(fileName = "BodyDetails_", menuName = "Scriptable Objects/Body Details")]
     public class BodyDetailsSO : ScriptableObject
     {
         [Header("BODY BASIC CONFIGURATION")]
-        public CelestialBodyType celestialBodyType;
-        public SizeCategory sizeCategory;
+        public SizeOrder sizeOrder;
         public Sprite sprite;
 
         [Tooltip("The prefab to use for this body that will be parented to the PlayerBody game object.")]
@@ -68,10 +53,5 @@ namespace Spotnose.Stardust
         
         [Tooltip("The base Y offset to use for the engine sprite position when this body is active. As the scale grows this value will be multiplied by the scale.")]
         public float engineSpriteBaseYOffset;
-
-        /// <summary>
-        /// Returns the size order of this body. The size order is defined by (int) CelestialBodyType + (int) SizeCategory.
-        /// </summary>
-        public int GetSizeOrder() => (int) celestialBodyType + (int) sizeCategory;
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71d999cfbb6bb9a4ca4fce554305a57e, type: 3}
   m_Name: EngineDetails_Level_0
   m_EditorClassIdentifier: 
-  engineName: BP-404 "Yorkshire" Engine
+  engineName: TK-404 "Spark" Engine
   engineUpgradeLevel: 0
   enginePrefab: {fileID: 3232127985626162853, guid: d46ddaea1dfccac4bb6d055e7594c369, type: 3}
   engineActivationSound: {fileID: 0}

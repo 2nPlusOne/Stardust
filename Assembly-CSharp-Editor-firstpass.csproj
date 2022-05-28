@@ -41,13 +41,9 @@
     <ImplicitlyExpandDesignTimeFacades>false</ImplicitlyExpandDesignTimeFacades>
   </PropertyGroup>
   <ItemGroup>
-    <Analyzer Include="C:\Users\nimbl\Documents\Game Dev\Game Projects\Stardust\Assets\Plugins\Polarith\AI\Plugins\Editor\Polarith.AI.Editor.dll" />
-    <Analyzer Include="C:\Users\nimbl\Documents\Game Dev\Game Projects\Stardust\Assets\Plugins\Polarith\AI\Plugins\Polarith.AI.dll" />
-  </ItemGroup>
-  <ItemGroup>
-     <Compile Include="Assets\Plugins\Polarith\AI\Examples\Editor\EnvironmentUpdaterEditor.cs" />
-     <Compile Include="Assets\Plugins\Polarith\AI\Examples\Editor\VehiclePhysicsEditor.cs" />
      <Compile Include="Assets\Plugins\Polarith\AI\Examples\Editor\ObjectSpawnerEditor.cs" />
+     <Compile Include="Assets\Plugins\Polarith\AI\Examples\Editor\VehiclePhysicsEditor.cs" />
+     <Compile Include="Assets\Plugins\Polarith\AI\Examples\Editor\EnvironmentUpdaterEditor.cs" />
      <None Include="Assets\Plugins\Polarith\AI\Plugins\Editor\Polarith.AI.Editor.xml" />
      <Reference Include="UnityEngine">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.3f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
@@ -301,6 +297,12 @@
      <Reference Include="UnityEditor.WindowsStandalone.Extensions">
      <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.3f1\Editor\Data\PlaybackEngines\WindowsStandaloneSupport\UnityEditor.WindowsStandalone.Extensions.dll</HintPath>
      </Reference>
+     <Reference Include="Polarith.AI">
+     <HintPath>C:\Users\nimbl\Documents\Game Dev\Game Projects\Stardust\Assets\Plugins\Polarith\AI\Plugins\Polarith.AI.dll</HintPath>
+     </Reference>
+     <Reference Include="Polarith.AI.Editor">
+     <HintPath>C:\Users\nimbl\Documents\Game Dev\Game Projects\Stardust\Assets\Plugins\Polarith\AI\Plugins\Editor\Polarith.AI.Editor.dll</HintPath>
+     </Reference>
      <Reference Include="Unity.VisualScripting.YamlDotNet">
      <HintPath>C:\Users\nimbl\Documents\Game Dev\Game Projects\Stardust\Library\PackageCache\com.unity.visualscripting@1.7.6\Editor\VisualScripting.Core\Dependencies\YamlDotNet\Unity.VisualScripting.YamlDotNet.dll</HintPath>
      </Reference>
@@ -333,12 +335,6 @@
      </Reference>
      <Reference Include="clipper_library">
      <HintPath>C:\Users\nimbl\Documents\Game Dev\Game Projects\Stardust\Library\PackageCache\com.unity.cinemachine@2.8.4\Runtime\ThirdParty\clipper_library.dll</HintPath>
-     </Reference>
-     <Reference Include="Polarith.AI">
-     <HintPath>C:\Users\nimbl\Documents\Game Dev\Game Projects\Stardust\Assets\Plugins\Polarith\AI\Plugins\Polarith.AI.dll</HintPath>
-     </Reference>
-     <Reference Include="Polarith.AI.Editor">
-     <HintPath>C:\Users\nimbl\Documents\Game Dev\Game Projects\Stardust\Assets\Plugins\Polarith\AI\Plugins\Editor\Polarith.AI.Editor.dll</HintPath>
      </Reference>
      <Reference Include="nunit.framework">
      <HintPath>C:\Users\nimbl\Documents\Game Dev\Game Projects\Stardust\Library\PackageCache\com.unity.ext.nunit@1.0.6\net35\unity-custom\nunit.framework.dll</HintPath>
