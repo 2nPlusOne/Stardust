@@ -4285,7 +4285,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5507991976144808558, guid: 864f0b64684ae9b4b89e6e8c10f3da7d, type: 3}
       propertyPath: Pursue.InnerRadius
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -5507991976144808558, guid: 864f0b64684ae9b4b89e6e8c10f3da7d, type: 3}
       propertyPath: Pursue.OuterRadius
@@ -4297,11 +4297,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -5507991976144808558, guid: 864f0b64684ae9b4b89e6e8c10f3da7d, type: 3}
       propertyPath: Pursue.MagnitudeMultiplier
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -4630313726076994526, guid: 864f0b64684ae9b4b89e6e8c10f3da7d, type: 3}
       propertyPath: Wander.Steadiness
-      value: 0.2
+      value: 0.4
       objectReference: {fileID: 0}
     - target: {fileID: -4630313726076994526, guid: 864f0b64684ae9b4b89e6e8c10f3da7d, type: 3}
       propertyPath: Wander.AngleDeviationMax
@@ -4325,7 +4325,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3869933646144560139, guid: 864f0b64684ae9b4b89e6e8c10f3da7d, type: 3}
       propertyPath: Avoid.MagnitudeMultiplier
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3869933646144560240, guid: 864f0b64684ae9b4b89e6e8c10f3da7d, type: 3}
       propertyPath: m_Name
@@ -4393,7 +4393,7 @@ PrefabInstance:
       objectReference: {fileID: 236593155}
     - target: {fileID: 3869933646144560246, guid: 864f0b64684ae9b4b89e6e8c10f3da7d, type: 3}
       propertyPath: Seek.InnerRadius
-      value: 6
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3869933646144560246, guid: 864f0b64684ae9b4b89e6e8c10f3da7d, type: 3}
       propertyPath: Seek.OuterRadius

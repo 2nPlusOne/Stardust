@@ -11,12 +11,14 @@ namespace Spotnose.Stardust
         {
             Events.OnMassChanged.AddListener(OnMassChanged);
             Events.OnBodyChanged.AddListener(OnBodyChanged);
+            Events.OnEngineChanged.AddListener(OnEngineChanged);
         }
         
         private void OnDisable()
         {
             Events.OnMassChanged.RemoveListener(OnMassChanged);
             Events.OnBodyChanged.RemoveListener(OnBodyChanged);
+            Events.OnEngineChanged.RemoveListener(OnEngineChanged);
         }
 
         private void Awake()
@@ -50,6 +52,12 @@ namespace Spotnose.Stardust
 
         private void OnBodyChanged(BodyDetailsSO bodyDetails, Mass mass)
         {
+            SetSpritePosition(mass);
+        }
+
+        private void OnEngineChanged(EngineDetailsSO engineDetails)
+        {
+            var mass = Player.Instance.Mass;
             SetSpritePosition(mass);
         }
     }

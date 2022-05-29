@@ -103,6 +103,7 @@ namespace Spotnose.Stardust
             print("Changing state to starting...");
             Events.OnGameStarted.Invoke(playerGameObject);
             Player.SetBodyDetails(startingBody);
+
             ChangeState(GameState.Playing);
         }
 

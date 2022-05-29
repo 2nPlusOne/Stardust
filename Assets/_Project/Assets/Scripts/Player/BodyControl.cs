@@ -18,6 +18,16 @@ namespace Spotnose.Stardust
         private Vector2 _engineForceDirection;
         private Vector2 _movementVector;
 
+        private void OnEnable()
+        {
+            Events.OnGameStarted.AddListener(OnGameStarted);
+        }
+        
+        private void OnDisable()
+        {
+            Events.OnGameStarted.RemoveListener(OnGameStarted);
+        }
+
         private void Awake()
         {
             _player = GetComponent<Player>();
@@ -47,7 +57,7 @@ namespace Spotnose.Stardust
         
             enginePivotTransform.Rotate(Vector3.forward * (_engine.engineTurnSpeed * _turnInput));
         }
-        
+
         public void SetEngine(Engine engine)
         {
             if (_engine.engineParticles.isPlaying)
@@ -66,6 +76,18 @@ namespace Spotnose.Stardust
             {
                 _engine.engineParticles.Stop();
             }
+        }
+
+        private void OnGameStarted(GameObject _)
+        {
+            // Set the player's initial velocity to a random vector of magnitude 2
+            var initialVelocity = new Vector2(
+                UnityEngine.Random.Range(-1f, 1f),
+                UnityEngine.Random.Range(-1f, 1f)
+            );
+            initialVelocity.Normalize();
+            initialVelocity *= 2f;
+            _rb2d.velocity = initialVelocity;
         }
     }
 
