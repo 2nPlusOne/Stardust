@@ -23,6 +23,15 @@ namespace Spotnose.Stardust
 
         [Tooltip("Reward for collecting this debris")]
         public int absorbReward;
+        
+        [Header("MASS DAMAGE CONFIGURATION")]
+        [Tooltip("The maximum amount of damage this debris can inflict on the player's mass on impact. " +
+                 "It will only be applied if the player doesn't meet the minimum size order requirements")]
+        public int maxMassDamageOnImpact;
+        
+        [Tooltip("The maximum relative velocity needed to inflict maximum mass damage on the player. " +
+                 "Impact damage is scaled by the relative velocity of the impact.")]
+        public float maxMassDamageRelativeVelocity;
 
         [Space(10)]
         [Header("SPAWNING DETAILS")]

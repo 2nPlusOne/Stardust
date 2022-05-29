@@ -34,7 +34,7 @@ namespace Spotnose.Stardust
         
         private void Update()
         {
-            _player ??= Player.Instance;  // TODO: replace player singleton this with dependency injection
+            _player ??= Player.Instance;  // TODO: mad sus
             
             HandleDustParticulates();
             HandleMetalParticulates();

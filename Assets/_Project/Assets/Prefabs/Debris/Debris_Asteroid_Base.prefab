@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -9145207795246298040}
   - component: {fileID: 2451359405970375692}
   - component: {fileID: 2777704430755749251}
-  - component: {fileID: -5332414510122404908}
+  - component: {fileID: -3118757282101612560}
   m_Layer: 0
   m_Name: Debris_Asteroid_Base
   m_TagString: Untagged
@@ -101,9 +101,9 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 0.09
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_AngularDrag: 0
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: a5b70f044e3208449abed583a4f17c64, type: 2}
   m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -140,7 +140,7 @@ PolygonCollider2D:
       - {x: 0.062008467, y: -0.12361375}
       - {x: 0.125, y: -0.060939044}
       - {x: 0.125, y: 0.125}
---- !u!114 &-5332414510122404908
+--- !u!114 &-3118757282101612560
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -149,6 +149,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8783766566944164718}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 507764ad45a655e4dab0e739ddb68cae, type: 3}
+  m_Script: {fileID: 11500000, guid: 96601dcfdd3e4720a277592682edf9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionDebounceTime: 0.25

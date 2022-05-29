@@ -67,8 +67,6 @@ namespace Spotnose.Stardust
         public float GetMassPercentage()
         {
             var massDifference = _bodyDetails.maxMass - _bodyDetails.minMass;
-            Debug.Log($"Mass difference for {_bodyDetails.name}: {massDifference}");
-            Debug.Log("Mass Percentage: " + (_currentMass - _bodyDetails.minMass) / massDifference);
             return (float) (_currentMass - _bodyDetails.minMass) / massDifference;
         }
         

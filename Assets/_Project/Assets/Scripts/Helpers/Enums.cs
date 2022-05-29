@@ -23,4 +23,10 @@ namespace Spotnose.Stardust
     }
     
     public enum InventoryItemType { Metal }
+    
+    public enum PoolComponentType
+    {
+        Particulate,
+        Debris
+    }
 }

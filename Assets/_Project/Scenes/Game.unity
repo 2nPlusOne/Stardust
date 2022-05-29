@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 8454628}
   - component: {fileID: 8454629}
   m_Layer: 0
-  m_Name: ParticulateManager
+  m_Name: ParticulateSpawnManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1936,6 +1936,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773512866}
   m_CullTransparentMesh: 1
+--- !u!1 &777826995
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 777826997}
+  - component: {fileID: 777826996}
+  m_Layer: 0
+  m_Name: DebrisSpawnManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &777826996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777826995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9dc7a0110e170a4c93928dcc21d357b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  debrisMinSpawnRadius: 20
+  debrisMaxSpawnRadius: 150
+  debrisCullRadius: 151
+  debrisCullInterval: 0.01
+  asteroidDetails0: {fileID: 11400000, guid: 5a3a41f40ad2a9e42b1c0a2570fb3d91, type: 2}
+  asteroidDetails1: {fileID: 11400000, guid: 3d5bdedd9fcfde74e82c3455cfadd819, type: 2}
+  asteroidDetails2: {fileID: 11400000, guid: 42012fd2e69adf940a8cca763d3d5631, type: 2}
+  asteroidDetails3: {fileID: 11400000, guid: eb1b2b39f84448146b5661582830586d, type: 2}
+  asteroidDetails4: {fileID: 11400000, guid: 1c19abb9371b01149a4b19a6aeade77c, type: 2}
+  asteroidDetails5: {fileID: 11400000, guid: f331b23aebff11142835f53a5c15a33f, type: 2}
+  asteroidDetails6: {fileID: 11400000, guid: eef3f41fbcfe7b24daa99407d45d0a91, type: 2}
+--- !u!4 &777826997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 777826995}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &864969181
 GameObject:
   m_ObjectHideFlags: 0
@@ -2523,7 +2578,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1147072015
 GameObject:
@@ -2721,7 +2776,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1205833079
 MonoBehaviour:
@@ -2741,6 +2796,27 @@ MonoBehaviour:
     componentType: 0
   - poolSize: 300
     prefab: {fileID: 5172795377339559510, guid: 22dfb672198eb5c4b82646c9640ad33e, type: 3}
+    componentType: 0
+  - poolSize: 300
+    prefab: {fileID: 2519901582443108582, guid: 3254942e86b1c7d4f9cc5450d8ff380e, type: 3}
+    componentType: 1
+  - poolSize: 225
+    prefab: {fileID: 2519901582443108582, guid: e11db37fd2417a14eb37f5909862895d, type: 3}
+    componentType: 1
+  - poolSize: 200
+    prefab: {fileID: 2519901582443108582, guid: c5f817cf4d19e6d4cae76c6133727a80, type: 3}
+    componentType: 1
+  - poolSize: 175
+    prefab: {fileID: 2519901582443108582, guid: 194e722b28762264e82e9c91b5194383, type: 3}
+    componentType: 1
+  - poolSize: 150
+    prefab: {fileID: 2519901582443108582, guid: eaf66dbde68b41a4c8524cf5e1ee76b1, type: 3}
+    componentType: 1
+  - poolSize: 125
+    prefab: {fileID: 2519901582443108582, guid: f51083955a8d48d49a4e8779fc747cc0, type: 3}
+    componentType: 1
+  - poolSize: 100
+    prefab: {fileID: 2519901582443108582, guid: a6a0657b666614a418fa38761b8e4f93, type: 3}
     componentType: 1
 --- !u!1 &1217390256
 GameObject:
@@ -3947,7 +4023,7 @@ Transform:
   - {fileID: 1041071502}
   - {fileID: 1429011569}
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1822150672
 GameObject:

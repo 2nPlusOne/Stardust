@@ -78,16 +78,17 @@ namespace Spotnose.Stardust
             }
         }
 
+        // TODO: fix this function (doesn't work at all right now)
         private void OnGameStarted(GameObject _)
         {
-            // Set the player's initial velocity to a random vector of magnitude 2
-            var initialVelocity = new Vector2(
-                UnityEngine.Random.Range(-1f, 1f),
-                UnityEngine.Random.Range(-1f, 1f)
-            );
-            initialVelocity.Normalize();
-            initialVelocity *= 2f;
-            _rb2d.velocity = initialVelocity;
+            // // Set the player's initial velocity to a random vector of magnitude 2
+            // var initialVelocity = new Vector2(
+            //     UnityEngine.Random.Range(-1f, 1f),
+            //     UnityEngine.Random.Range(-1f, 1f)
+            // );
+            // initialVelocity.Normalize();
+            // initialVelocity *= 2f;
+            // _rb2d.velocity = initialVelocity;
         }
     }
 

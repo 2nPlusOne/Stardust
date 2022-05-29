@@ -73,12 +73,6 @@ namespace Spotnose.Stardust
             return objectToReturn;
         }
 
-        public enum PoolComponentType
-        {
-            DustParticulate,
-            MetalParticulate,
-        }
-
 #if UNITY_EDITOR
         private void OnValidate()
         {

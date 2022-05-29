@@ -10,21 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 211870860a3b3ac4ca333b0fed9e9d35, type: 3}
-  m_Name: DebrisDetails_Asteroid_0
+  m_Name: DebrisDetails_Asteroid_4
   m_EditorClassIdentifier: 
   sizeOrder:
     celestialBodyType: 0
-    sizeCategory: 0
-  sprite: {fileID: 21300000, guid: 7adac4dfd8eda7541a866576f7077929, type: 3}
+    sizeCategory: 4
+  sprite: {fileID: 21300000, guid: d5f504f873b617d46b134777e2b16441, type: 3}
   debrisPrefabs:
-  - {fileID: 2519901582443108582, guid: 3254942e86b1c7d4f9cc5450d8ff380e, type: 3}
+  - {fileID: 2519901582443108582, guid: eaf66dbde68b41a4c8524cf5e1ee76b1, type: 3}
   minAbsorptionSizeOrder:
     celestialBodyType: 0
-    sizeCategory: 3
-  absorbRelativeVelocityMin: 2
-  absorbReward: 2
-  initialSpeedRange: {x: 1.5, y: 3}
-  maxParticulateCount: 50
+    sizeCategory: 6
+  absorbRelativeVelocityMin: 4
+  absorbReward: 30
+  maxMassDamageOnImpact: 60
+  maxMassDamageRelativeVelocity: 12
+  initialSpeedRange: {x: 2, y: 5}
+  maxParticulateCount: 40
   spawnInterval: 0.01
-  activeDebrisCount: 0
-  debrisSpawnTimer: 0
+  activeDebrisCount: 40
+  debrisSpawnTimer: 8.112887

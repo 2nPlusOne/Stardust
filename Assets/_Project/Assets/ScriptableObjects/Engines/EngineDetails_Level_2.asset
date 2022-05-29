@@ -17,7 +17,7 @@ MonoBehaviour:
   enginePrefab: {fileID: 3232127985626162853, guid: 0d57494723d517941bffab914c2071c1, type: 3}
   engineUpgradeLevel: 2
   upgradeRequiresItemType: 0
-  upgradeCost: 30
+  upgradeCost: 24
   engineActivationSound: {fileID: 0}
   engineTurnSpeed: 3.5
   engineForce: 30

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Spotnose.Stardust
 {
-    public class UpdateEnginePosition : MonoBehaviour
+    public class UpdateEngineSpritePosition : MonoBehaviour
     {
         private SpriteRenderer _spriteRenderer;
         
@@ -38,9 +38,7 @@ namespace Spotnose.Stardust
             var transformScale = 1 + (scaleDifference * massPercent);
 
             var spriteHeightFactor = _spriteRenderer.sprite.bounds.size.y / 4f;
-            print($"Sprite height factor: {spriteHeightFactor}");
             var offset = bodyDetails.engineSpriteBaseYOffset * transformScale - spriteHeightFactor;
-            print($"Offset: {offset}");
             gameObject.transform.localPosition = new Vector3(0, offset, 0);
         }
 
