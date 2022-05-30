@@ -23,6 +23,7 @@ namespace Spotnose.Stardust
         [SerializeField] private GameObject helpFrame;
         [SerializeField] private GameObject settingsFrame;
         [SerializeField] private GameObject creditsFrame;
+        [SerializeField] private GameObject introFrame;
         
         [Header("SOUNDS")]
         [SerializeField] private SoundEffectSO selectSound;
@@ -36,6 +37,8 @@ namespace Spotnose.Stardust
             creditsButton.onClick.AddListener(OnCreditsButtonClicked);
             quitButton.onClick.AddListener(OnQuitButtonClicked);
             backButton.onClick.AddListener(OnBackButtonClicked);
+            
+            Events.OnIntroScrollFinished.AddListener(OnIntroScrollFinished);
         }
 
         private void OnDisable()
@@ -47,6 +50,8 @@ namespace Spotnose.Stardust
             creditsButton.onClick.RemoveListener(OnCreditsButtonClicked);
             quitButton.onClick.RemoveListener(OnQuitButtonClicked);
             backButton.onClick.RemoveListener(OnBackButtonClicked);
+            
+            Events.OnIntroScrollFinished.RemoveListener(OnIntroScrollFinished);
         }
 
         private void OnMainMenuInputDown()
@@ -65,9 +70,15 @@ namespace Spotnose.Stardust
         private void OnPlayButtonClicked()
         {
             mainMenuPanel.SetActive(false);
-            GameManager.Instance.ChangeState(GameState.Starting);
-            
+            introFrame.SetActive(true);
+
             SoundManager.Instance.PlaySoundEffect(selectSound);
+        }
+
+        private void OnIntroScrollFinished()
+        {
+            introFrame.SetActive(false);
+            GameManager.Instance.ChangeState(GameState.Starting);
         }
 
         private void OnHelpButtonClicked()
