@@ -32,6 +32,7 @@ namespace Spotnose.Stardust
         
         private void OnPauseMenuInputDown()
         {
+            if (CurrentState == GameState.MainMenu) return;
             if (CurrentState == GameState.Paused)
             {
                 ChangeState(GameState.Playing);
@@ -46,8 +47,8 @@ namespace Spotnose.Stardust
         
         private void OnUpgradeMenuInputDown()
         {
-            if (CurrentState == GameState.Paused) return;
-            
+            if (CurrentState is GameState.Paused or GameState.MainMenu) return;
+
             if (CurrentState == GameState.UpgradeMenu)
             {
                 ChangeState(GameState.Playing);

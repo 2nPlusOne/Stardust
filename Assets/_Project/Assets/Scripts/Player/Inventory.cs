@@ -22,6 +22,7 @@ namespace Spotnose.Stardust
             {
                 case InventoryItemType.Metal:
                     _metal = count;
+                    Events.OnMetalCountChanged.Invoke(_metal);
                     break;
             }
         }

@@ -47,7 +47,7 @@ namespace Spotnose.Stardust
 
             UpdateUI();
         }
-        
+
         private void OnDisable()
         {
             costButton.onClick.RemoveListener(OnCostButtonClicked);
@@ -78,7 +78,15 @@ namespace Spotnose.Stardust
             
             var player = Player.Instance;
             
-            if (player is null) return;
+            if (player.needToResetUpgradeUI)
+            {
+                player.needToResetUpgradeUI = false;
+                _upgraded = false;
+                _locked = false;
+                SetToUnlocked();
+            }
+            
+            if (player == null) return;
             if (_upgraded) return;
             
             _locked = engineDetails.engineUpgradeLevel > player.CurrentEngine.engineDetails.engineUpgradeLevel + 1;
@@ -106,6 +114,7 @@ namespace Spotnose.Stardust
 
             costButtonImage.color = _canAfford ? _availableDeselectedColor : _unavailableDeselectedColor;
         }
+
 
         // set to locked
 

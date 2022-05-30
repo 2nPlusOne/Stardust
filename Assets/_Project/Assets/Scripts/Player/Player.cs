@@ -19,6 +19,7 @@ namespace Spotnose.Stardust
         public Rigidbody2D Rb2d { get; private set; }
 
         private BodyControl _bodyControl;
+        public bool needToResetUpgradeUI;
 
         private void OnEnable()
         {
@@ -53,6 +54,7 @@ namespace Spotnose.Stardust
             Mass.SetCurrentMass(startingLoadout.startingMass);
             Inventory.SetItemCount(InventoryItemType.Metal, startingLoadout.startingMetal);
             transform.position = Vector3.zero;
+            needToResetUpgradeUI = true;
 
             Events.OnBodyChanged.Invoke(startingLoadout.startingBodyDetails, Mass);
             Events.OnEngineChanged.Invoke(startingLoadout.startingEngineDetails);

@@ -54,6 +54,7 @@ namespace Spotnose.Stardust
             {
                 _currentMass = 0;
                 Events.OnMassReachedZero.Invoke(this);
+                Events.OnMassChanged.Invoke(this);
                 return;
             }
             //if (_currentMass <= _bodyDetails.minMass) return;
