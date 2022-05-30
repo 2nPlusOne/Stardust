@@ -18,7 +18,7 @@ MonoBehaviour:
   engineUpgradeLevel: 2
   upgradeRequiresItemType: 0
   upgradeCost: 24
-  engineActivationSound: {fileID: 0}
+  engineActivationSound: {fileID: 8300000, guid: a65f9013b2d597a48b72ef1a7a67af5b, type: 3}
   engineTurnSpeed: 3.5
   engineForce: 30
   engineMaxSpeed: 6

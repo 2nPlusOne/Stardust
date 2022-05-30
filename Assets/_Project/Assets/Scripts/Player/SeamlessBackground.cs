@@ -1,4 +1,3 @@
-using Cinemachine;
 using UnityEngine;
 
 namespace Spotnose.Stardust

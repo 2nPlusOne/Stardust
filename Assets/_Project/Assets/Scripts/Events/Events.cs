@@ -1,4 +1,5 @@
 using System;
+using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 namespace Spotnose.Stardust
@@ -20,6 +21,10 @@ namespace Spotnose.Stardust
         public static readonly GameEvent<Mass> OnMassReachedZero = new();
         public static readonly GameEvent<int> OnHealthChanged = new();
         public static readonly GameEvent<int> OnMetalCountChanged = new();
+        
+        // Player Control Events
+        public static readonly GameEvent OnThrustInputDown = new();
+        public static readonly GameEvent OnThrustInputUp = new();
 
         // UI Events
         public static readonly GameEvent OnUpgradeMenuInputDown = new();
@@ -28,6 +33,7 @@ namespace Spotnose.Stardust
         public static readonly GameEvent OnPauseMenuInputDown = new();
         public static readonly GameEvent OnPauseMenuOpened = new();
         public static readonly GameEvent OnPauseMenuClosed = new();
+        public static readonly GameEvent OnMainMenuInputDown = new();
 
         // Upgrade Events
         public static readonly GameEvent<EngineDetailsSO> OnEngineUpgradePurchased = new();

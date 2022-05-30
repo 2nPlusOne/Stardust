@@ -1,15 +1,13 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 
 namespace Spotnose.Stardust
 {
+    [DisallowMultipleComponent]
     public class GameManager : PersistentSingleton<GameManager>
     {
         [SerializeField] private GameObject playerGameObject;
-        
-        [SerializeField] private BodyDetailsSO startingBody;
 
         public GameState CurrentState { get; private set; }
         public Player Player { get; private set; }
@@ -29,7 +27,7 @@ namespace Spotnose.Stardust
         private void Start()
         {
             Player = playerGameObject.GetComponent<Player>();
-            ChangeState(GameState.Starting);
+            ChangeState(GameState.MainMenu);
         }
         
         private void OnPauseMenuInputDown()
@@ -48,6 +46,8 @@ namespace Spotnose.Stardust
         
         private void OnUpgradeMenuInputDown()
         {
+            if (CurrentState == GameState.Paused) return;
+            
             if (CurrentState == GameState.UpgradeMenu)
             {
                 ChangeState(GameState.Playing);
@@ -96,13 +96,14 @@ namespace Spotnose.Stardust
         private void HandleMainMenu()
         {
             print("Changing state to main menu...");
+            Time.timeScale = 0f;
         }
 
         private void HandleStarting()
         {
             print("Changing state to starting...");
             Events.OnGameStarted.Invoke(playerGameObject);
-            Player.SetBodyDetails(startingBody);
+            Player.Initialize();
 
             ChangeState(GameState.Playing);
         }

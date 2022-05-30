@@ -20,13 +20,16 @@ MonoBehaviour:
   - {fileID: 2519901582443108582, guid: f51083955a8d48d49a4e8779fc747cc0, type: 3}
   minAbsorptionSizeOrder:
     celestialBodyType: 0
-    sizeCategory: 8
+    sizeCategory: 6
   absorbRelativeVelocityMin: 6
   absorbReward: 60
-  maxMassDamageOnImpact: 120
+  damageRelativeVelocityMin: 1.5
+  maxMassDamageOnImpact: 60
   maxMassDamageRelativeVelocity: 16
   initialSpeedRange: {x: 2, y: 4}
   maxParticulateCount: 30
   spawnInterval: 0.01
+  absorbSound: {fileID: 11400000, guid: 25b4975380ab1d042923fcb3e3893c1e, type: 2}
+  impactSound: {fileID: 11400000, guid: 8f0adf59f0274e14e97d3f67a94dfad0, type: 2}
   activeDebrisCount: 30
-  debrisSpawnTimer: 8.112887
+  debrisSpawnTimer: 772.82587

@@ -8,7 +8,14 @@ namespace Spotnose.Stardust
     public class MenuToggleHandler : MonoBehaviour
     {
         [SerializeField] private GameObject pauseMenuFrame;
+        [SerializeField] private GameObject pauseMenuRaycastBlocker;
         [SerializeField] private GameObject upgradeMenuFrame;
+
+        [Header("SOUNDS")] 
+        [SerializeField] private SoundEffectSO menuOpenSound;
+        [SerializeField] private SoundEffectSO menuCloseSound;
+
+        private bool _upgradeWasOpenBeforePause;
 
         private void OnEnable()
         {
@@ -34,28 +41,46 @@ namespace Spotnose.Stardust
 
         private void OnGameStarted(GameObject playerGameObject)
         {
-            //pauseMenuFrame.SetActive(false);
+            pauseMenuFrame.SetActive(true);
+            upgradeMenuFrame.SetActive(true);
+
+            pauseMenuRaycastBlocker.SetActive(false);
+            pauseMenuFrame.SetActive(false);
             upgradeMenuFrame.SetActive(false);
         }
 
         private void OnPauseMenuOpened()
         {
+            _upgradeWasOpenBeforePause = upgradeMenuFrame.activeSelf;
+            upgradeMenuFrame.SetActive(false);
+            pauseMenuRaycastBlocker.SetActive(true);
             pauseMenuFrame.SetActive(true);
+            SoundManager.Instance.PlaySoundEffect(menuOpenSound);
         }
         
         private void OnPauseMenuClosed()
         {
+            pauseMenuRaycastBlocker.SetActive(false);
             pauseMenuFrame.SetActive(false);
+            SoundManager.Instance.PlaySoundEffect(menuCloseSound);
+            
+            if (_upgradeWasOpenBeforePause)
+            {
+                GameManager.Instance.ChangeState(GameState.UpgradeMenu);
+                upgradeMenuFrame.SetActive(true);
+            }
         }
         
         private void OnUpgradeMenuOpened()
         {
             upgradeMenuFrame.SetActive(true);
+            SoundManager.Instance.PlaySoundEffect(menuOpenSound);
         }
         
         private void OnUpgradeMenuClosed()
         {
             upgradeMenuFrame.SetActive(false);
+            SoundManager.Instance.PlaySoundEffect(menuCloseSound);
         }
     }
 }

@@ -9,6 +9,8 @@ namespace Spotnose.Stardust
     {
         [SerializeField] private Transform bodyParentTransform;
         [SerializeField] private Transform engineParentTransform;
+        
+        public PlayerStartingLoadoutSO startingLoadout;
         public BodyDetailsSO BodyDetails { get; private set; }
         public Health Health { get; private set; }
         public Mass Mass { get; private set; }
@@ -43,7 +45,20 @@ namespace Spotnose.Stardust
             _bodyControl = GetComponent<BodyControl>();
         }
 
-        public void SetBodyDetails(BodyDetailsSO bodyDetails)
+        public void Initialize()
+        {
+            SetBodyDetails(startingLoadout.startingBodyDetails);
+            SetBody(startingLoadout.startingBodyDetails.bodyPrefab);
+            SetEngine(startingLoadout.startingEngineDetails);
+            Mass.SetCurrentMass(startingLoadout.startingMass);
+            Inventory.SetItemCount(InventoryItemType.Metal, startingLoadout.startingMetal);
+            transform.position = Vector3.zero;
+
+            Events.OnBodyChanged.Invoke(startingLoadout.startingBodyDetails, Mass);
+            Events.OnEngineChanged.Invoke(startingLoadout.startingEngineDetails);
+        }
+
+        private void SetBodyDetails(BodyDetailsSO bodyDetails)
         {
             BodyDetails = bodyDetails;
             Mass.SetBodyDetails(BodyDetails);

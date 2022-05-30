@@ -15,6 +15,16 @@ namespace Spotnose.Stardust
                 _ => 0
             };
         }
+        
+        public void SetItemCount(InventoryItemType inventoryItemType, int count)
+        {
+            switch (inventoryItemType)
+            {
+                case InventoryItemType.Metal:
+                    _metal = count;
+                    break;
+            }
+        }
 
         public void AddItem(InventoryItemType inventoryItemType, int amount)
         {

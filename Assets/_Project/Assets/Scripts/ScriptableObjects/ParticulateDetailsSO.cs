@@ -35,6 +35,10 @@ namespace Spotnose.Stardust
         [Tooltip("The time interval at which spawn attempts for this particulate are made")]
         public float spawnInterval = 0.01f;
         
+        [Header("SOUNDS")]
+        [Tooltip("The sound to play when this particulate is collected")]
+        public SoundEffectSO pickupSound;
+        
         [HideInInspector] public int activeParticulateCount;
         [HideInInspector] public float particulateSpawnTimer;
         

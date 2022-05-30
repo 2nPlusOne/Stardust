@@ -16,6 +16,9 @@ namespace Spotnose.Stardust
         [SerializeField] private TMP_Text costText;
         [SerializeField] private TMP_Text costTypeText;
         
+        [Header("SOUNDS")]
+        [SerializeField] private SoundEffectSO engineUpgradeSound;
+        
         private bool _canAfford;
         private bool _upgraded;
         private bool _locked;
@@ -55,7 +58,8 @@ namespace Spotnose.Stardust
 
         private void Awake()
         {
-            if (engineDetails.engineUpgradeLevel == 0)
+            var startingEngine = Player.Instance.startingLoadout.startingEngineDetails;
+            if (engineDetails.engineUpgradeLevel == startingEngine.engineUpgradeLevel)
             {
                 SetToUpgraded();
                 return;
@@ -135,7 +139,7 @@ namespace Spotnose.Stardust
             if (!_canAfford)
             {
                 print("Not enough " + engineDetails.upgradeRequiresItemType + " to upgrade");
-                // TODO: Play sound
+                SoundManager.Instance.PlaySoundEffect(engineUpgradeSound);
                 return;
             }
             player.Inventory.RemoveItem(engineDetails.upgradeRequiresItemType, engineDetails.upgradeCost);

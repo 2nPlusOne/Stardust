@@ -61,6 +61,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
+    - {fileID: -3118757282101612560, guid: 758e25152448e464f9196598570aeb0a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 758e25152448e464f9196598570aeb0a, type: 3}
 --- !u!1 &2519901582443108582 stripped
 GameObject:
@@ -79,3 +80,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96601dcfdd3e4720a277592682edf9d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  collisionDebounceTime: 0.25

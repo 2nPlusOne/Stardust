@@ -16,6 +16,19 @@ namespace Spotnose.Stardust
         }
 
         public int GetCurrentMass() => _currentMass;
+        
+        public void SetCurrentMass(int currentMass)
+        {
+            if (currentMass < 0)
+            {
+                _currentMass = 0;
+                Events.OnMassChanged.Invoke(this);
+
+                return;
+            }
+            _currentMass = currentMass;
+            Events.OnMassChanged.Invoke(this);
+        }
 
         /// <summary>
         /// Allowed a user to add mass to this mass component, increasing its current mass.

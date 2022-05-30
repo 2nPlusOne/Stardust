@@ -10,6 +10,7 @@ namespace Spotnose.Stardust
             if (inventory is null) return;
             
             inventory.AddItem(InventoryItemType.Metal, ParticulateDetails.pickupReward);
+            SoundManager.Instance.PlaySoundEffect(ParticulateDetails.pickupSound);
             print($"Metal collected! Metal: {inventory.GetItemCount(InventoryItemType.Metal)}");
             
             gameObject.SetActive(false);

@@ -762,6 +762,7 @@ MonoBehaviour:
   requiresText: {fileID: 2489864411471213835}
   costText: {fileID: 693876462111889783}
   costTypeText: {fileID: 6488816473864396288}
+  engineUpgradeSound: {fileID: 11400000, guid: f6a66303b124dfc4892cc4fb8f2223b9, type: 2}
 --- !u!1 &5109701169265440190
 GameObject:
   m_ObjectHideFlags: 0

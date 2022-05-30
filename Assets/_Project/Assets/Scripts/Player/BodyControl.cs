@@ -3,13 +3,15 @@ using UnityEngine;
 
 namespace Spotnose.Stardust
 {
-    [RequireComponent(typeof(Player))]
+    [RequireComponent(typeof(Player), typeof(InputHandler))]
+    [RequireComponent(typeof(AudioSource))]
     [DisallowMultipleComponent]
     public class BodyControl : MonoBehaviour
     {
         // engine pivot
         [SerializeField] private Transform enginePivotTransform;
 
+        private InputHandler _inputHandler;
         private Player _player;
         private Engine _engine;
         private Rigidbody2D _rb2d;
@@ -17,6 +19,8 @@ namespace Spotnose.Stardust
         private float _thrustInput;
         private Vector2 _engineForceDirection;
         private Vector2 _movementVector;
+
+        private AudioSource _thrusterAudioSource;
 
         private void OnEnable()
         {
@@ -30,8 +34,10 @@ namespace Spotnose.Stardust
 
         private void Awake()
         {
+            _inputHandler = GetComponent<InputHandler>();
             _player = GetComponent<Player>();
             _rb2d = GetComponent<Rigidbody2D>();
+            _thrusterAudioSource = GetComponent<AudioSource>();
         }
 
         private void Start()
@@ -41,10 +47,11 @@ namespace Spotnose.Stardust
 
         private void Update()
         {
-            _turnInput = Input.GetAxis("Horizontal");
-            _thrustInput = Input.GetAxis("Vertical");
+            _turnInput = _inputHandler.GetTurnInput();
+            _thrustInput = _inputHandler.GetThrustInput();
             
             HandleParticles();
+            //HandleAudio();
 
             _engineForceDirection = enginePivotTransform.up;
             _movementVector = _engineForceDirection * (_engine.engineForce * _thrustInput);
@@ -62,7 +69,7 @@ namespace Spotnose.Stardust
         {
             if (_engine.engineParticles.isPlaying)
                 _engine.engineParticles.Stop();
-            
+
             _engine = engine;
         }
 
@@ -75,6 +82,18 @@ namespace Spotnose.Stardust
             else if (_thrustInput < .1 && _engine.engineParticles.isPlaying)
             {
                 _engine.engineParticles.Stop();
+            }
+        }
+
+        private void HandleAudio()
+        {
+            if (_thrustInput > .1 && !_thrusterAudioSource.isPlaying)
+            {
+                _thrusterAudioSource.Play();
+            }
+            else if (_thrustInput < .1 && _thrusterAudioSource.isPlaying)
+            {
+                _thrusterAudioSource.Stop();
             }
         }
 

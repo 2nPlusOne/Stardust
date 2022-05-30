@@ -11,6 +11,7 @@ namespace Spotnose.Stardust
             if (collision.relativeVelocity.magnitude < ParticulateDetails.pickupRelativeVelocityMin) return;
             
             mass.AddMass(ParticulateDetails.pickupReward);
+            SoundManager.Instance.PlaySoundEffect(ParticulateDetails.pickupSound);
             print($"Dust collected! Mass: {mass.GetCurrentMass()}");
             
             gameObject.SetActive(false);

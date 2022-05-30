@@ -21,5 +21,6 @@ MonoBehaviour:
   initialSpeedRange: {x: 0.1, y: 1}
   maxParticulateCount: 300
   spawnInterval: 0.01
+  pickupSound: {fileID: 11400000, guid: 2955fef58bec4f84f8c07676939a472b, type: 2}
   activeParticulateCount: 300
-  particulateSpawnTimer: 0.009412872
+  particulateSpawnTimer: 5.266721
