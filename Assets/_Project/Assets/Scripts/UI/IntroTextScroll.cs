@@ -6,6 +6,7 @@ namespace Spotnose.Stardust
 {
     public class IntroTextScroll : MonoBehaviour
     {
+        [SerializeField] float speedMultiplier = 100f;
         private RectTransform _textRect;
 
         private void OnEnable()
@@ -16,7 +17,7 @@ namespace Spotnose.Stardust
 
         private void Update()
         {
-            _textRect.anchoredPosition += new Vector2(0, 100 * Time.unscaledDeltaTime);
+            _textRect.anchoredPosition += new Vector2(0, speedMultiplier * Time.unscaledDeltaTime);
             
             if (_textRect.anchoredPosition.y > 3000 || Input.GetKeyDown(KeyCode.Space) || Input.GetKeyDown(KeyCode.Return))
             {

@@ -19,17 +19,25 @@ namespace Spotnose.Stardust
         private float _thrustInput;
         private Vector2 _engineForceDirection;
         private Vector2 _movementVector;
-
-        private AudioSource _thrusterAudioSource;
+        
+        private bool _invertSteering;
 
         private void OnEnable()
         {
             Events.OnGameStarted.AddListener(OnGameStarted);
+            Events.OnInvertSteeringChanged.AddListener(OnInvertSteeringChanged);
         }
         
         private void OnDisable()
         {
             Events.OnGameStarted.RemoveListener(OnGameStarted);
+            Events.OnInvertSteeringChanged.RemoveListener(OnInvertSteeringChanged);
+        }
+
+        private void OnInvertSteeringChanged(bool inverted)
+        {
+            print("Invert steering changed to " + inverted);
+            _invertSteering = inverted;
         }
 
         private void Awake()
@@ -37,12 +45,12 @@ namespace Spotnose.Stardust
             _inputHandler = GetComponent<InputHandler>();
             _player = GetComponent<Player>();
             _rb2d = GetComponent<Rigidbody2D>();
-            _thrusterAudioSource = GetComponent<AudioSource>();
         }
 
         private void Start()
         {
             _engine = _player.CurrentEngine;
+            _invertSteering = PlayerPrefs.GetInt("InvertSteering", 0) == 1;
         }
 
         private void Update()
@@ -51,7 +59,6 @@ namespace Spotnose.Stardust
             _thrustInput = _inputHandler.GetThrustInput();
             
             HandleParticles();
-            //HandleAudio();
 
             _engineForceDirection = enginePivotTransform.up;
             _movementVector = _engineForceDirection * (_engine.engineForce * _thrustInput);
@@ -61,8 +68,8 @@ namespace Spotnose.Stardust
         {
             _rb2d.AddForce(_movementVector);
             _rb2d.velocity = Vector2.ClampMagnitude(_rb2d.velocity, _engine.engineMaxSpeed);
-        
-            enginePivotTransform.Rotate(Vector3.forward * (_engine.engineTurnSpeed * _turnInput));
+            
+            enginePivotTransform.Rotate(Vector3.forward * (_engine.engineTurnSpeed * _turnInput * (_invertSteering ? 1 : -1)));
         }
 
         public void SetEngine(Engine engine)
@@ -82,18 +89,6 @@ namespace Spotnose.Stardust
             else if (_thrustInput < .1 && _engine.engineParticles.isPlaying)
             {
                 _engine.engineParticles.Stop();
-            }
-        }
-
-        private void HandleAudio()
-        {
-            if (_thrustInput > .1 && !_thrusterAudioSource.isPlaying)
-            {
-                _thrusterAudioSource.Play();
-            }
-            else if (_thrustInput < .1 && _thrusterAudioSource.isPlaying)
-            {
-                _thrusterAudioSource.Stop();
             }
         }
 

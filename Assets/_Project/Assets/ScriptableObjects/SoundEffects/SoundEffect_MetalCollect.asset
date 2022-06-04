@@ -15,7 +15,7 @@ MonoBehaviour:
   soundEffectName: MetalCollect
   soundPrefab: {fileID: 5640540338221533959, guid: 60cd372504775aa4081f2190f5c0d6ee, type: 3}
   audioClip: {fileID: 8300000, guid: 6853f5261a19c8a47a229ba9e720bcb1, type: 3}
-  pitch: 1
+  pitch: 0.8
   pitchVariationRange: {x: -0.05, y: 0.05}
-  volume: 1
-  volumeVariationRange: {x: -0.1, y: 0.1}
+  volume: 0.6
+  volumeVariationRange: {x: -0.15, y: 0.15}

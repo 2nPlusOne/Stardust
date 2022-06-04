@@ -19,8 +19,8 @@ MonoBehaviour:
   particulatePrefabs:
   - {fileID: 5172795377339559510, guid: 22dfb672198eb5c4b82646c9640ad33e, type: 3}
   initialSpeedRange: {x: 0.5, y: 1.5}
-  maxParticulateCount: 70
+  maxParticulateCount: 80
   spawnInterval: 0.01
   pickupSound: {fileID: 11400000, guid: f4fca839416a9f14d9ab11224027d3a7, type: 2}
   activeParticulateCount: 70
-  particulateSpawnTimer: 17.082579
+  particulateSpawnTimer: 16.308126

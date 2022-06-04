@@ -23,13 +23,13 @@ MonoBehaviour:
     sizeCategory: 4
   absorbRelativeVelocityMin: 3
   absorbReward: 5
-  damageRelativeVelocityMin: 1.5
-  maxMassDamageOnImpact: 10
+  damageRelativeVelocityMin: 2
+  maxMassDamageOnImpact: 6
   maxMassDamageRelativeVelocity: 8
   initialSpeedRange: {x: 2, y: 4.5}
-  maxParticulateCount: 30
+  maxParticulateCount: 25
   spawnInterval: 0.01
   absorbSound: {fileID: 11400000, guid: 25b4975380ab1d042923fcb3e3893c1e, type: 2}
   impactSound: {fileID: 11400000, guid: 8f0adf59f0274e14e97d3f67a94dfad0, type: 2}
   activeDebrisCount: 30
-  debrisSpawnTimer: 37.343575
+  debrisSpawnTimer: 70.227875

@@ -35,6 +35,7 @@ namespace Spotnose.Stardust
         public static readonly GameEvent OnPauseMenuClosed = new();
         public static readonly GameEvent OnMainMenuInputDown = new();
         public static readonly GameEvent OnIntroScrollFinished = new();
+        public static readonly GameEvent<bool> OnInvertSteeringChanged = new();
 
         // Upgrade Events
         public static readonly GameEvent<EngineDetailsSO> OnEngineUpgradePurchased = new();
