@@ -44,6 +44,7 @@ namespace Spotnose.Stardust
     public struct MixerGroupParameter
     {
         public VolumeParameter volumeParameter;
+        public float defaultLinearVolume;
 
         public string GetString()
         {

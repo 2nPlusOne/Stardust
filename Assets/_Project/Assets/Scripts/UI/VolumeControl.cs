@@ -15,7 +15,7 @@ namespace Spotnose.Stardust
         {
             slider.onValueChanged.AddListener(OnSliderValueChanged);
             
-            slider.value = PlayerPrefs.GetFloat(mixerGroupParameter.GetString(), slider.value);
+            slider.value = PlayerPrefs.GetFloat(mixerGroupParameter.GetString(), mixerGroupParameter.defaultLinearVolume);
         }
         
         private void OnDisable()
@@ -30,7 +30,7 @@ namespace Spotnose.Stardust
 
         private void Start()
         {
-            slider.value = PlayerPrefs.GetFloat(mixerGroupParameter.GetString(), slider.value);
+            slider.value = PlayerPrefs.GetFloat(mixerGroupParameter.GetString(), mixerGroupParameter.defaultLinearVolume);
         }
 
         private void OnSliderValueChanged(float value)

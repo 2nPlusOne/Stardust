@@ -596,6 +596,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroupParameter:
     volumeParameter: 0
+    defaultLinearVolume: 0.6
   audioMixer: {fileID: 24100000, guid: e2188208e084f2548b756800d53226e7, type: 2}
   slider: {fileID: 787753957}
   multiplier: 30
@@ -1998,6 +1999,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroupParameter:
     volumeParameter: 2
+    defaultLinearVolume: 0.5
   audioMixer: {fileID: 24100000, guid: e2188208e084f2548b756800d53226e7, type: 2}
   slider: {fileID: 1247849154}
   multiplier: 30
@@ -2988,6 +2990,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroupParameter:
     volumeParameter: 1
+    defaultLinearVolume: 0.5
   audioMixer: {fileID: 24100000, guid: e2188208e084f2548b756800d53226e7, type: 2}
   slider: {fileID: 1453872692}
   multiplier: 30
@@ -5854,7 +5857,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: v0.3.3
+  m_text: v0.3.4
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -6157,6 +6160,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroupParameter:
     volumeParameter: 2
+    defaultLinearVolume: 0.5
   audioMixer: {fileID: 24100000, guid: e2188208e084f2548b756800d53226e7, type: 2}
   slider: {fileID: 956329810}
   multiplier: 30
@@ -9501,6 +9505,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroupParameter:
     volumeParameter: 1
+    defaultLinearVolume: 0.5
   audioMixer: {fileID: 24100000, guid: e2188208e084f2548b756800d53226e7, type: 2}
   slider: {fileID: 680406543}
   multiplier: 30
@@ -13429,6 +13434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mixerGroupParameter:
     volumeParameter: 0
+    defaultLinearVolume: 0.6
   audioMixer: {fileID: 24100000, guid: e2188208e084f2548b756800d53226e7, type: 2}
   slider: {fileID: 1189703248}
   multiplier: 30

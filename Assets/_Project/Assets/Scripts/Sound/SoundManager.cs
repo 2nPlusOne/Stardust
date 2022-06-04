@@ -12,13 +12,13 @@ namespace Spotnose.Stardust
         // Start is called before the first frame update
         void Start()
         {
-            var masterdB = PlayerPrefs.GetFloat(Settings.MasterVolumeParam + "dB", 0.8f);
+            var masterdB = PlayerPrefs.GetFloat(Settings.MasterVolumeParam + "dB", -4f);
             audioMixer.SetFloat(Settings.MasterVolumeParam, masterdB);
             
-            var musicdB = PlayerPrefs.GetFloat(Settings.MusicVolumeParam + "dB", 0.8f);
+            var musicdB = PlayerPrefs.GetFloat(Settings.MusicVolumeParam + "dB", -8f);
             audioMixer.SetFloat(Settings.MusicVolumeParam, musicdB);
             
-            var sfxdB = PlayerPrefs.GetFloat(Settings.SfxVolumeParam + "dB", 0.8f);
+            var sfxdB = PlayerPrefs.GetFloat(Settings.SfxVolumeParam + "dB", -8f);
             audioMixer.SetFloat(Settings.SfxVolumeParam, sfxdB);
         }
 

@@ -26,6 +26,11 @@ namespace Spotnose.Stardust
             _quitButton.onClick.AddListener(OnQuitButtonClicked);
             
             _pauseMenuSettingsFrame.SetActive(false);
+            _resumeButton.gameObject.SetActive(true);
+            _settingsButton.gameObject.SetActive(true);
+            _restartButton.gameObject.SetActive(true);
+            _mainMenuButton.gameObject.SetActive(true);
+            _quitButton.gameObject.SetActive(true);
         }
         
         private void OnDisable()

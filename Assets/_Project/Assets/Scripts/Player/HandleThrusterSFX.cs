@@ -21,14 +21,32 @@ namespace Spotnose.Stardust
         {
             Events.OnThrustInputDown.AddListener(OnThrusterInputDown);
             Events.OnThrustInputUp.AddListener(OnThrusterInputUp);
+            Events.OnAfterGameStateChanged.AddListener(OnAfterGameStateChanged);
         }
         
         private void OnDisable()
         {
             Events.OnThrustInputDown.RemoveListener(OnThrusterInputDown);
             Events.OnThrustInputUp.RemoveListener(OnThrusterInputUp);
+            Events.OnAfterGameStateChanged.RemoveListener(OnAfterGameStateChanged);
         }
-        
+
+        private void OnAfterGameStateChanged(GameState oldState, GameState newState)
+        {
+            switch (newState)
+            {
+                case GameState.Paused or GameState.UpgradeMenu:
+                    _audioSource.Pause();
+                    break;
+                case GameState.Playing:
+                    _audioSource.UnPause();
+                    break;
+                case GameState.MainMenu:
+                    _audioSource.Stop();
+                    break;
+            }
+        }
+
         private void OnThrusterInputDown()
         {
             if (_audioSource.isPlaying) return;
