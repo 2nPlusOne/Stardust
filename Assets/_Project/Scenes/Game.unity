@@ -1845,7 +1845,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 75.063, y: 45.553}
+  m_AnchoredPosition: {x: 75.06299, y: 45.55301}
   m_SizeDelta: {x: -150.125, y: -91.105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &226548835
@@ -2132,7 +2132,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 75.063, y: 45.553}
+  m_AnchoredPosition: {x: 75.06299, y: 45.55301}
   m_SizeDelta: {x: -150.125, y: -91.105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &243937838
@@ -2706,7 +2706,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 75.063, y: 45.553}
+  m_AnchoredPosition: {x: 75.06299, y: 45.55301}
   m_SizeDelta: {x: -150.125, y: -91.105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &300531017
@@ -3029,7 +3029,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 75.063, y: 45.553}
+  m_AnchoredPosition: {x: 75.06299, y: 45.55301}
   m_SizeDelta: {x: -150.125, y: -91.105}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &330116455
@@ -6635,11 +6635,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3155645627118387282, guid: aefea0af591559b4990f7877acc17ec6, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 75.063
+      value: 75.06299
       objectReference: {fileID: 0}
     - target: {fileID: 3155645627118387282, guid: aefea0af591559b4990f7877acc17ec6, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 45.553
+      value: 45.55301
       objectReference: {fileID: 0}
     - target: {fileID: 3155645628025207233, guid: aefea0af591559b4990f7877acc17ec6, type: 3}
       propertyPath: m_Pivot.x
@@ -10130,6 +10130,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 1754996153}
     m_Modifications:
     - target: {fileID: 592662622073155415, guid: 7a98fd1f023a9bf409f3d53c70149f1c, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1429011571}
+    - target: {fileID: 592662622073155415, guid: 7a98fd1f023a9bf409f3d53c70149f1c, type: 3}
+      propertyPath: m_RenderMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 592662622073155415, guid: 7a98fd1f023a9bf409f3d53c70149f1c, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
       objectReference: {fileID: 0}
@@ -10961,7 +10969,11 @@ MonoBehaviour:
     SF Pixelate font by ShyFoundry
 
 
-    > MAD Hacker font by Darrell Flood'
+    > MAD Hacker font by Darrell Flood
+
+
+    >
+    Space ship AI made using Polarith AI (free)'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 87eb89115375c8b4f88144ccfde4cca0, type: 2}
   m_sharedMaterial: {fileID: -8367434331729393877, guid: 87eb89115375c8b4f88144ccfde4cca0, type: 2}
@@ -10988,8 +11000,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 384
-  m_fontSizeBase: 384
+  m_fontSize: 320
+  m_fontSizeBase: 320
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -11230,7 +11242,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 17.4, y: 0}
+  m_AnchoredPosition: {x: 17.399994, y: 0}
   m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1490116797
@@ -13541,7 +13553,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1550.0039, y: -545.60944}
+  m_AnchoredPosition: {x: 1550.0039, y: -545.6094}
   m_SizeDelta: {x: 579.205, y: 102.872}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2045149278
