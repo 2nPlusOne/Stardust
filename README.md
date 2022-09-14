@@ -1,5 +1,6 @@
 # Stardust
 A space game about collecting mass. Created for the [GameDev.tv Game Jam 2022](https://itch.io/jam/gamedevtv-jam-2022).
+Play the game on itch.io: https://2nplusone.itch.io/stardust
 
 ## Submission Results
 The results for my submission can be viewed [here](https://itch.io/jam/gamedevtv-jam-2022/rate/1553285). <br>
